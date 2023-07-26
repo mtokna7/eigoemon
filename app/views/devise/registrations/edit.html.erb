@@ -1,4 +1,67 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+
+
+<div class="hero min-h-screen bg-base-200">
+  <div class="hero-content flex-col lg:flex-row-reverse">
+    <div class="text-center lg:text-left">
+      <h1 class="text-5xl font-bold">Edit <%= resource_name.to_s.humanize %></h1>
+      <p class="py-6">Edit your details below and click "Update" to save changes.</p>
+    </div>
+    <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+      <div class="card-body">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text"><%= f.label :name %></span>
+            </label>
+            <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "input input-bordered" %>
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text"><%= f.label :email %></span>
+            </label>
+            <%= f.email_field :email, autocomplete: "email", class: "input input-bordered" %>
+          </div>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text"><%= f.label :password %></span>
+            </label>
+            <%= f.password_field :password, autocomplete: "new-password", class: "input input-bordered" %>
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %>
+            <p class="text-xs text-gray-600 mt-2">If you want to change your password, please input new password here. Otherwise, leave this field blank.</p>
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text"><%= f.label :password_confirmation %></span>
+            </label>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input input-bordered" %>
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text"><%= f.label :current_password %></span>
+            </label>
+            <%= f.password_field :current_password, autocomplete: "current-password", class: "input input-bordered" %>
+          </div>
+          <div class="form-control mt-6">
+            <%= f.submit "Update", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+        <div class="form-control mt-6">
+          <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= link_to "Back", :back, class: "btn btn-primary mt-6" %>
+<h2>もともとEdit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
