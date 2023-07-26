@@ -1,4 +1,37 @@
-<h2>Log in</h2>
+<div class="hero min-h-screen bg-base-200">
+  <div class="hero-content flex-col lg:flex-row-reverse">
+    <div class="text-center lg:text-left">
+      <h1 class="text-5xl font-bold">Log in</h1>
+      <p class="py-6">Please enter your details to log in.</p>
+    </div>
+    <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+      <div class="card-body">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text"><%= f.label :email %></span>
+            </label>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input input-bordered" %>
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text"><%= f.label :password %></span>
+            </label>
+            <%= f.password_field :password, autocomplete: "current-password", class: "input input-bordered" %>
+          </div>
+          <div class="form-control mt-6">
+            <%= f.submit "Log in", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render "devise/shared/links" %>
+
+
+<h2>もともとLog in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
