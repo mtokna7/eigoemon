@@ -1,3 +1,30 @@
+<div class="navbar bg-blue-700">
+  <div class="flex-1">
+    <a class="btn btn-ghost text-xl text-base-200">ロゴに：はつめい屋 英語えもん</a>
+  </div>
+  <div class="flex-none">
+    <ul class="menu menu-horizontal px-1 text-base-200">
+      <li><a>Link</a></li>
+      <li>
+        <details>
+          <summary>
+            ユーザー名
+          </summary>
+          <ul class="p-2 bg-base-100">
+            <li><a>会員情報</a></li>
+            <li><a>Link 2</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+
 <h1>ヘッダーのパーシャル※ログアウト前後でヘッダーのパーシャル分けるんだっけ？</h1>
 <% if user_signed_in? %>
   名前：<%= current_user.name %>
