@@ -1,8 +1,12 @@
-<%= render partial: 'shared/header' %>
+<div class="bg-base-200">
+  <header><%= render 'shared/header' %></header>
 
-<html data-theme="fantasy">
-<h1>tailwindテスト/h1>
-<button class="btn btn-primary">One</button>
-<button class="btn btn-secondary">Two</button>
-<button class="btn btn-accent btn-outline">Three</button>
-</html>
+  <button class="btn btn-primary">One</button>
+  <button class="btn btn-secondary">Two</button>
+  <button class="btn btn-accent btn-outline">Three</button> </ br>
+  <div class="mockup-code bg-primary text-primary-content">
+    <pre><code>テスト　can be any color!</code></pre>
+  </div>
+
+  <footer><%= render 'shared/footer' %></footer>
+</div>
