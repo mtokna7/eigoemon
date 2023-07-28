@@ -4,13 +4,13 @@
 <div class="flex">
   <% @quiz_choices.each do |choice| %>
     <div class="p-6 m-4 bg-white rounded shadow-md flex-1">
-      <% first_part, bold_part, last_part = choice.parts %>
+      <% parts = choice.parts %>
 
-      <%= first_part %>
-      <% if bold_part %>
-        <strong class="font-bold text-red-500"><%= bold_part %></strong>
+      <%= parts[:first_part] %>
+      <% if parts[:bold_part] %>
+        <strong class="font-bold text-red-500"><%= parts[:bold_part] %></strong>
       <% end %>
-      <%= last_part %>
+      <%= parts[:last_part] %>
     </div>
   <% end %>
 </div>
