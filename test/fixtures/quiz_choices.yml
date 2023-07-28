@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quiz: one
+  furigana: MyString
+  is_correct: false
+  bold_start: 1
+  bold_end: 1
+
+two:
+  quiz: two
+  furigana: MyString
+  is_correct: false
+  bold_start: 1
+  bold_end: 1

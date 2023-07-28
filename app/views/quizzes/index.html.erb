@@ -1,0 +1,5 @@
+<% @quizzes.each do |quiz| %>
+  <p>
+    <%= quiz.id %>: <%= link_to "Go to Quiz", quiz_path(quiz) %>
+  </p>
+<% end %>
