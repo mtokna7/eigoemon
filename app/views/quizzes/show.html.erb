@@ -1,11 +1,16 @@
 <h1>Quizzes#show</h1>
 <h1><%= @quiz.word.name %></h1>
 
-<% @quiz_choices.each do |choice| %>
-  <% first_part, bold_part, last_part = choice.parts %>
-  <%= first_part %>
-  <% if bold_part %>
-    <strong><%= bold_part %></strong>
+<div class="flex">
+  <% @quiz_choices.each do |choice| %>
+    <div class="p-6 m-4 bg-white rounded shadow-md flex-1">
+      <% first_part, bold_part, last_part = choice.parts %>
+
+      <%= first_part %>
+      <% if bold_part %>
+        <strong class="font-bold text-red-500"><%= bold_part %></strong>
+      <% end %>
+      <%= last_part %>
+    </div>
   <% end %>
-  <%= last_part %>
-<% end %>
+</div>
