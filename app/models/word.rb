@@ -5,4 +5,12 @@ class Word < ApplicationRecord
   validates :programming_explanation, presence: true
   validates :english_explanation, presence: true
   validates :furigana, presence: true
+
+  after_create :create_quiz
+
+  private
+
+  def create_quiz
+    self.create_quiz!
+  end
 end
