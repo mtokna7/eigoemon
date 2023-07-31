@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_31_153849) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_31_155603) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,14 +34,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_153849) do
 
   create_table "user_quiz_histories", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "quiz_id", null: false
+    t.bigint "word_id", null: false
     t.bigint "quiz_choice_id", null: false
     t.boolean "is_correct", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["quiz_choice_id"], name: "index_user_quiz_histories_on_quiz_choice_id"
-    t.index ["quiz_id"], name: "index_user_quiz_histories_on_quiz_id"
     t.index ["user_id"], name: "index_user_quiz_histories_on_user_id"
+    t.index ["word_id"], name: "index_user_quiz_histories_on_word_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -73,5 +73,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_153849) do
   add_foreign_key "quizzes", "words"
   add_foreign_key "user_quiz_histories", "quiz_choices"
   add_foreign_key "user_quiz_histories", "users"
-  add_foreign_key "user_quiz_histories", "words", column: "quiz_id"
+  add_foreign_key "user_quiz_histories", "words"
 end
