@@ -1,0 +1,20 @@
+<h1>Explanations#programming</h1>
+
+<% if @user_quiz_history.is_correct %>
+  <h2>正解！！</h2>
+<% else %>
+  <h2>不正解！！</h2>
+<% end %>
+
+<h3>こたえは <% parts = @word.parts %></h3>
+<%= parts[:first_part] %>
+<% if parts[:bold_part] %>
+  <strong class="font-bold tect-red-500"><%= parts[:bold_part] %></strong>
+<% end %>
+<%= parts[:last_part] %>
+
+
+<h3>プログラミングではこんなふうに使うよ</h3>
+  <p><%= @word.programming_explanation %></p>
+
+<h3>ここにyouglishAPI</h3>
