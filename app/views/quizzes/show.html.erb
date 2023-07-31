@@ -6,7 +6,7 @@
     <div class="p-6 m-4 bg-white rounded shadow-md flex-1">
       <% parts = choice.parts %>
 
-      <%= link_to programming_explanation_path(id: @quiz.word.id), method: :get, class: "text-decoration-none" do %>
+      <%= link_to programming_explanation_path(id: @quiz.word.id, choice_id: choice.id), method: :get, class: "text-decoration-none" do %>
         <%= parts[:first_part] %>
         <% if parts[:bold_part] %>
           <strong class="font-bold text-red-500"><%= parts[:bold_part] %></strong>
