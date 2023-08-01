@@ -2,7 +2,7 @@
 <h1><%= @quiz.word.name %></h1>
 
 <div class="flex">
-  <% @quiz_choices.each do |choice| %>
+  <% @quiz_choices.shuffle.each do |choice| %>
     <div class="p-6 m-4 bg-white rounded shadow-md flex-1">
       <% parts = choice.parts %>
 
