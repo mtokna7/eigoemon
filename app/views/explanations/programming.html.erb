@@ -1,9 +1,9 @@
 <h1>Explanations#programming</h1>
 
 <% if @user_quiz_history.is_correct %>
-  <h2>正解！！</h2>
+  <h2>Fantastic! You got it right! See the explanation below.</h2>
 <% else %>
-  <h2>不正解！！</h2>
+  <h2>Almost there! Check out the explanation below to understand better.</h2>
 <% end %>
 
 <h3>こたえは <% parts = @word.parts %></h3>
@@ -18,3 +18,8 @@
   <p><%= @word.programming_explanation %></p>
 
 <h3>ここにyouglishAPI</h3>
+
+<%= link_to 'もう1問！', quiz_path(Quiz.all.pluck(:id).sample), class: 'btn btn-primary' %>
+<%= link_to 'Topへ戻る', root_path, class: 'btn btn-secondary' %>
+<%= link_to 'メモする','#', class: 'btn btn-thrdry' %>
+
