@@ -1,5 +1,6 @@
 <h1>Quizzes#show</h1>
 <h1><%= @quiz.word.name %></h1>
+<p>正解だと思う方のふりがなをクリックしてね！</p>
 
 <div class="flex">
   <% @quiz_choices.shuffle.each do |choice| %>
