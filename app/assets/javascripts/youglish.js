@@ -1,53 +1,38 @@
-// 2. This code loads the widget API code asynchronously.
 var tag = document.createElement('script');
 tag.src = "https://youglish.com/public/emb/widget.js";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-// 3. This function creates a widget after the API code downloads.
 var widget;
 function onYouglishAPIReady(){
   widget = new YG.Widget("youglish-widget", {
     width: 350,
-    components:11, //search box & caption & アクセントパネル
-    autoStart: 0, // Disable autoplay
-    restrictionMode: 1, // Enable restriction mode
+    components:11, //検索・字幕・アクセント選択
+    autoStart: 0, // 自動再生off
+    restrictionMode: 1, // キッズモードon
     events: {
       'onFetchDone': onFetchDone,
       'onVideoChange': onVideoChange,
-      'onCaptionConsumed': onCaptionConsumed
     }          
   });
 
-  // 4. process the query
   var word = document.getElementById('youglish-widget').dataset.word;
-  widget.fetch(word, "english", "us");
+  widget.fetch(word, "english", "us"); // デフォルトをusアクセントに設定
 }
 
-var views = 0, curTrack = 0, totalTracks = 0;
+// コントローラに動画の自動切り替えを追加するなら必要
+var curTrack = 0, totalTracks = 0;
 
-// 5. The API will call this method when the search is done
 function onFetchDone(event){
   if (event.totalResult === 0)   alert("No result found");
   else totalTracks = event.totalResult; 
 }
 
-// 6. The API will call this method when switching to a new video. 
 function onVideoChange(event){
   curTrack = event.trackNumber;
-  views = 0;
 }
 
-// 7. The API will call this method when a caption is consumed. 
-function onCaptionConsumed(event){
-  if (++views < 3)
-    widget.replay();
-  else 
-    if (curTrack < totalTracks)  
-      widget.next();
-}
-
-// Control button event listeners
+// コントローラの機能
 document.getElementById('play-button').addEventListener('click', function() {
   widget.play();
 });
@@ -56,6 +41,6 @@ document.getElementById('pause-button').addEventListener('click', function() {
   widget.pause();
 });
 
-document.getElementById('prev-button').addEventListener('click', function() {
-  widget.previous();
+document.getElementById('repeat-button').addEventListener('click', function() {
+  widget.replay();
 });
