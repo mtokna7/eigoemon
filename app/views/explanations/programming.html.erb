@@ -36,13 +36,14 @@
 
 <!-- モーダル -->
 <dialog id="myModal" class="modal">
-  <form method="dialog" class="modal-box w-11/12 h-screen max-w-5xl">
+  <div class="modal-box w-11/12 h-screen max-w-5xl">
     <!-- モーダルの中身はJavaScriptで動的に生成されます -->
     <h3 class="font-bold text-lg" id="modalTitle"></h3>
     <p class="py-4" id="modalContent"></p>
+    <%= image_tag 'man_01_mono.png', id: 'modalImage', class: 'hidden' %>
     <div class="modal-action">
       <!-- if there is a button, it will close the modal -->
-      <button class="btn">閉じる</button>
+      <button class="btn" onclick="document.getElementById('myModal').close()">閉じる</button>
     </div>
-  </form>
+  </div>
 </dialog>
