@@ -21,6 +21,7 @@ class User < ApplicationRecord
 
   def increase_level
     increment!(:level)
-    ActionCable.server.broadcast("level_up_#{id}", { level: level })
-  end 
+    some_value = email  # ユーザーのメールアドレスを取得
+    ActionCable.server.broadcast("level_up_#{id}", { level: level, someValue: some_value })
+  end
 end
