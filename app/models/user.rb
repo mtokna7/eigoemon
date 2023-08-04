@@ -21,5 +21,6 @@ class User < ApplicationRecord
 
   def increase_level
     increment!(:level)
-  end
+    ActionCable.server.broadcast("level_up_#{id}", { level: level })
+  end 
 end

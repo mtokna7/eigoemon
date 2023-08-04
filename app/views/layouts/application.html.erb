@@ -11,6 +11,11 @@
   </head>
 
   <body>
+    <% if user_signed_in? %>
+      <script>
+        window.currentUserId = <%= current_user.id %>;
+      </script>
+    <% end %>
     <%= yield %>
   </body>
 </html>
