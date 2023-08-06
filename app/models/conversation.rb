@@ -5,6 +5,6 @@ class Conversation < ApplicationRecord
   validates :order, presence: true, uniqueness: { scope: :level }
 
   
-  enum speaker: { hero: 0, eigoemon: 1 }
+  enum speaker: { boku: 0, eigoemon: 1, anothers: 2 }
   
 end
