@@ -17,3 +17,16 @@
     </div>
   <% end %>
 </div>
+
+<% if @level_up %>
+  <%= render 'level_up_modal' %>
+  <script>
+    window.currentUser = {
+      id: "<%= current_user.id %>",
+      token: "<%= form_authenticity_token %>"
+    };
+    window.conversationsData = <%= @conversations.map(&:content).to_json.html_safe %>;
+    window.speakersData = <%= @conversations.map(&:speaker).to_json.html_safe %>;
+  </script>
+  <%= javascript_include_tag 'level_up' %>
+<% end %>

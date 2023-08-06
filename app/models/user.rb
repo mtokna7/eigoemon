@@ -13,7 +13,10 @@ class User < ApplicationRecord
       quiz_choice: quiz_choice, 
       is_correct: is_correct
     )
-    increase_level if quiz_history.is_correct && user_quiz_histories.where(is_correct: true).count % 3 == 0
+    if quiz_history.is_correct && user_quiz_histories.where(is_correct: true).count % 3 == 0
+      increase_level 
+      self.update(leveled_up: true)
+    end
     quiz_history
   end
 
@@ -21,5 +24,6 @@ class User < ApplicationRecord
 
   def increase_level
     increment!(:level)
+    update!(leveled_up: true)
   end
 end

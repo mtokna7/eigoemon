@@ -1,6 +1,5 @@
 <%= javascript_include_tag 'youglish' %>
 
-
 <h1>Explanations#programming</h1>
 
 <% if @user_quiz_history.is_correct %>
@@ -15,7 +14,6 @@
   <strong class="font-bold tect-red-500"><%= parts[:bold_part] %></strong>
 <% end %>
 <%= parts[:last_part] %>
-
 
 <h3>プログラミングではこんなふうに使うよ</h3>
   <p><%= @word.programming_explanation %></p>
@@ -32,7 +30,21 @@
 <button id="pause-button" class="btn btn-secondary">Pause</button>
 <button id="repeat-button" class="btn btn-secondary">Repeat</button>
 
-
 <%= link_to 'もう1問！', quiz_path(Quiz.all.pluck(:id).sample), class: 'btn btn-primary' %>
 <%= link_to 'Topへ戻る', root_path, class: 'btn btn-secondary' %>
 <%= link_to 'メモする','#', class: 'btn btn-thrdry' %>
+
+<!-- モーダル -->
+<dialog id="myModal" class="modal">
+  <div class="modal-box w-11/12 h-screen max-w-5xl">
+    <!-- モーダルの中身はJavaScriptで動的に生成されます -->
+    <h3 class="font-bold text-lg" id="modalTitle"></h3>
+    <p class="py-4" id="modalContent"></p>
+    <%= image_tag 'man_01_mono.png', id: 'modalImage', class: 'hidden' %>
+    <div class="modal-action">
+      <!-- if there is a button, it will close the modal -->
+      <button class="btn" onclick="document.getElementById('myModal').close()">閉じる</button>
+      <button id="nextButton" class="btn">次へ</button> <!-- 「次へ」ボタンを追加 -->
+    </div>
+  </div>
+</dialog>

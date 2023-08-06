@@ -1,0 +1,14 @@
+<dialog id="level-up-modal" class="modal modal-bottom sm:modal-middle">
+  <form method="dialog" class="modal-box">
+    <h3 class="font-bold text-lg">Conversation with Eigoemon</h3>
+    <img src="<%= asset_path 'man_01_mono.png' %>" alt="Man Image" />
+    <p id="conversation-content">Initial conversation content (can be replaced dynamically)</p>
+    <div class="modal-action">
+      <!-- '次へ' button -->
+      <button type="button" id="next-button">次へ</button>
+
+      <!-- '閉じる' button. Initially hidden. -->
+      <button type="button" id="close-button" style="display: none;">閉じる</button>
+    </div>
+  </form>
+</dialog>
