@@ -13,14 +13,34 @@ class User < ApplicationRecord
       quiz_choice: quiz_choice, 
       is_correct: is_correct
     )
-    if quiz_history.is_correct && user_quiz_histories.where(is_correct: true).count % 3 == 0
-      increase_level 
-      self.update(leveled_up: true)
-    end
+    check_level_up
     quiz_history
   end
 
   private
+
+  def check_level_up
+    correct_count = user_quiz_histories.where(is_correct: true).count
+
+    case level
+    when 0
+      if correct_count == 1
+        increase_level
+      end
+    when 1
+      if correct_count == 4
+        increase_level
+      end
+    when 2
+      if correct_count == 8
+        increase_level
+      end
+    when 3
+      if correct_count == 10000000 #本リリース時に修正
+        increase_level
+      end
+    end
+  end
 
   def increase_level
     increment!(:level)
