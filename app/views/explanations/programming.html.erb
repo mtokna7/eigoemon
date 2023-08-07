@@ -22,13 +22,13 @@
 <h1><%= @word.name %></h1>
 
 <div id="youglish-player"></div>
-<!-- 1. The widget will replace this <div> tag. -->
 <div id="youglish-widget" data-word="<%= @word.name %>"></div>
-
 <!-- Control buttons -->
 <button id="play-button" class="btn btn-primary">Play</button>
 <button id="pause-button" class="btn btn-secondary">Pause</button>
 <button id="repeat-button" class="btn btn-secondary">Repeat</button>
+
+
 
 <%= link_to 'もう1問！', quiz_path(Quiz.all.pluck(:id).sample), class: 'btn btn-primary' %>
 <%= link_to 'Topへ戻る', root_path, class: 'btn btn-secondary' %>
