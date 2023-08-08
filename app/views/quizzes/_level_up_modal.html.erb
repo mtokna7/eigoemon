@@ -1,10 +1,12 @@
-<dialog id="level-up-modal" class="modal modal-bottom sm:modal-middle">
-  <form method="dialog" class="modal-box">
-    <h3 class="font-bold text-lg">Conversation with Eigoemon</h3>
-    <img src="<%= asset_path 'man.png' %>" alt="Man Image" />
-    <p id="conversation-content">conversations</p>
-    <div class="modal-action">
-      <button class="btn" id="next-button">つぎへ</button>
+<dialog id="level-up-modal" class="modal">
+  <form method="dialog" class="modal-box w-11/12 max-w-5xl mx-auto">
+    <h3 class="text-2xl font-dotgothic font-bold text-center text-violet-900 mb-1">おめでとう！ユーザーレベルがあがったよ！</h3>
+    <div class="flex space-x-4">
+      <%= image_tag("keshiki169.png", alt: "Man Image") %>
+    </div>
+    <div class="flex mt-2">
+      <p id="conversation-content" class="font-dotgothic text-lg bg-black text-white flex-grow pt-1 pb-1">conversations</p>
+      <button type="button" class="btn font-dotgothic ml-4" id="next-button">つぎへ</button>
     </div>
   </form>
 </dialog>
