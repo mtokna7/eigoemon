@@ -22,29 +22,14 @@
 <h1><%= @word.name %></h1>
 
 <div id="youglish-player"></div>
-<!-- 1. The widget will replace this <div> tag. -->
 <div id="youglish-widget" data-word="<%= @word.name %>"></div>
-
 <!-- Control buttons -->
 <button id="play-button" class="btn btn-primary">Play</button>
 <button id="pause-button" class="btn btn-secondary">Pause</button>
 <button id="repeat-button" class="btn btn-secondary">Repeat</button>
 
+
+
 <%= link_to 'もう1問！', quiz_path(Quiz.all.pluck(:id).sample), class: 'btn btn-primary' %>
 <%= link_to 'Topへ戻る', root_path, class: 'btn btn-secondary' %>
-<%= link_to 'メモする','#', class: 'btn btn-thrdry' %>
-
-<!-- モーダル -->
-<dialog id="myModal" class="modal">
-  <div class="modal-box w-11/12 h-screen max-w-5xl">
-    <!-- モーダルの中身はJavaScriptで動的に生成されます -->
-    <h3 class="font-bold text-lg" id="modalTitle"></h3>
-    <p class="py-4" id="modalContent"></p>
-    <%= image_tag 'man_01_mono.png', id: 'modalImage', class: 'hidden' %>
-    <div class="modal-action">
-      <!-- if there is a button, it will close the modal -->
-      <button class="btn" onclick="document.getElementById('myModal').close()">閉じる</button>
-      <button id="nextButton" class="btn">次へ</button> <!-- 「次へ」ボタンを追加 -->
-    </div>
-  </div>
-</dialog>
+<%= link_to 'メモする(準備中)','#', class: 'btn btn-thrdry' %>

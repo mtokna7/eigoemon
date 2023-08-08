@@ -13,4 +13,14 @@ module.exports = {
       "fantasy",
     ],
   },
+  theme: {
+    extend: {
+      fontFamily: {
+        'dotgothic': ['DotGothic16', 'sans-serif'],
+        'rocknroll': ['RocknRoll One', 'sans-serif'],
+        'rowdies': ['Rowdies', 'cursive'],
+        'yusei': ['Yusei Magic', 'sans-serif']
+      }
+    }
+  },
 }

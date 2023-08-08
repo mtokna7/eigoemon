@@ -1,32 +1,38 @@
-<h1>Quizzes#show</h1>
-<h1><%= @quiz.word.name %></h1>
-<p>正解だと思う方のふりがなをクリックしてね！</p>
+<body class=" text-black bg-base-100">
+  <h1 class="font-bold mt-5 text-6xl text-center py-10 font-yusei bg-yellow-500">もんだい！</h1>
+  <p class="mx-auto text-4xl text-center font-rocknroll">どっちのふりがながそれっぽいと思う？</p>
 
-<div class="flex">
-  <% @quiz_choices.shuffle.each do |choice| %>
-    <div class="p-6 m-4 bg-white rounded shadow-md flex-1">
-      <% parts = choice.parts %>
+  <p class="font-rowdies mx-auto text-7xl text-center mt-5 py-10"><%= @quiz.word.name %></p>
 
-      <%= link_to programming_explanation_path(id: @quiz.word.id, choice_id: choice.id), method: :get, class: "text-decoration-none" do %>
-        <%= parts[:first_part] %>
-        <% if parts[:bold_part] %>
-          <strong class="font-bold text-red-500"><%= parts[:bold_part] %></strong>
-        <% end %>
-        <%= parts[:last_part] %>
+  <div class="flex flex-col justify-center pb-20 items-center">
+    <div class="flex flex-col md:flex-row justify-center items-center">
+    <% @quiz_choices.shuffle.each_with_index do |choice, index| %>  
+        <% bg_color = index == 0 ? 'bg-rose-500' : 'bg-green-700' %>
+        <div class="w-96 h-48 p-6 mx-6 my-2 <%= bg_color %> rounded shadow-md text-5xl text-center font-yusei flex items-center justify-center mt-10">
+          <% parts = choice.parts %>
+
+          <%= link_to programming_explanation_path(id: @quiz.word.id, choice_id: choice.id), method: :get, class: "text-gray-700 text-decoration-none" do %>
+            <%= parts[:first_part] %>
+            <% if parts[:bold_part] %>
+              <strong class="font-bold text-black"><%= parts[:bold_part] %></strong>
+            <% end %>
+            <%= parts[:last_part] %>
+          <% end %>
+        </div>
       <% end %>
     </div>
-  <% end %>
-</div>
+  </div>
 
-<% if @level_up %>
-  <%= render 'level_up_modal' %>
-  <script>
-    window.currentUser = {
-      id: "<%= current_user.id %>",
-      token: "<%= form_authenticity_token %>"
-    };
-    window.conversationsData = <%= @conversations.map(&:content).to_json.html_safe %>;
-    window.speakersData = <%= @conversations.map(&:speaker).to_json.html_safe %>;
-  </script>
-  <%= javascript_include_tag 'level_up' %>
-<% end %>
+  <% if @level_up %>
+    <%= render 'level_up_modal' %>
+    <script>
+      window.currentUser = {
+        id: "<%= current_user.id %>",
+        token: "<%= form_authenticity_token %>"
+      };
+      window.conversationsData = <%= @conversations.map(&:content).to_json.html_safe %>;
+      window.speakersData = <%= @conversations.map(&:speaker).to_json.html_safe %>;
+    </script>
+    <%= javascript_include_tag 'level_up' %>
+  <% end %>
+</body>
