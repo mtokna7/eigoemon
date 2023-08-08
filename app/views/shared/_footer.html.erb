@@ -1,10 +1,9 @@
-<footer class="footer footer-center p-10 bg-blue-700">
-  <div class="grid grid-flow-col gap-4 text-base-200">
-    <%= link_to 'プライバシーポリシー', pages_privacy_path, class: 'link link-hover' %> 
-    <%= link_to '利用規約', pages_terms_path, class: 'link link-hover' %> 
-    <%= link_to 'お問い合わせ', '#', class: 'link link-hover' %> 
+<footer class="footer footer-center p-10 bg-yellow-600 font-yusei">
+  <div class="grid grid-flow-col gap-4">
+    <%= link_to 'プライバシーポリシー', pages_privacy_path, class: 'link link-hover text-base-200 text-lg' %> 
+    <%= link_to '利用規約', pages_terms_path, class: 'link link-hover text-base-200 text-lg' %> 
   </div> 
-  <div class="grid grid-flow-col gap-4 text-base-200 rounded">
-    <p>Copyright © <%= Time.current.year %> - All right reserved by はつめい屋 英語えもん</p>
+  <div class="grid grid-flow-col gap-4">
+    <p class="text-base-200 text-lg">Copyright © <%= Time.current.year %> - All right reserved by はつめい屋 英語えもん</p>
   </div>
 </footer>

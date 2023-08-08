@@ -1,8 +1,10 @@
+<%= render 'shared/header'%>
+
 <div class="hero min-h-screen bg-base-200">
   <div class="hero-content flex-col lg:flex-row-reverse">
     <div class="text-center lg:text-left">
       <h1 class="text-5xl font-bold">Log in</h1>
-      <p class="py-6">Please enter your details to log in.</p>
+      <p class="py-6"><%= link_to "会員登録はこちら", new_user_registration_path %></p>
     </div>
     <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
       <div class="card-body">
@@ -30,23 +32,3 @@
 
 <%= render "devise/shared/links" %>
 
-
-<h2>もともとLog in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>

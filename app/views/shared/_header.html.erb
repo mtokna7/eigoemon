@@ -1,27 +1,43 @@
-<div class="navbar bg-blue-700">
+<div class="navbar bg-yellow-600">
   <div class="flex-1">
-    <a class="btn btn-ghost text-xl text-base-200">ロゴに：はつめい屋 英語えもん</a>
+    <%= link_to 'はつめい屋 英語えもん', root_path, class: 'btn bg-rose-900 hover:bg-rose-800 text-white text-xl font-yusei ml-10' %>
   </div>
   <div class="flex-none">
-    <ul class="menu menu-horizontal px-1 text-base-200">
-      <li><a>Link</a></li>
+    <ul class="menu menu-horizontal px-3 text-xl font-yusei">
       <li>
         <details>
-          <summary>
-            ユーザー名
+          <summary class="btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white mr-10 px-8 text-lg">
+            おためし
           </summary>
-          <ul class="p-2 bg-base-100">
-            <li><a>会員情報</a></li>
-            <li><a>Link 2</a></li>
+          <ul class="p-2 bg-base-100 hover:bg-base-200">
+            <li><a>もんだい</a></li>
+            <li><a>図書館</a></li>
           </ul>
         </details>
+      </li>
+      <li>
+        <% if user_signed_in? %>
+          <details>
+            <summary class="btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei px-8 text-lg mr-5"><%= current_user.name %></summary>
+            <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box text-lg">
+              <li class="text-rose-900">ユーザーレベル：<%= current_user.level %></li>
+              <li><%= link_to "ユーザー編集", edit_user_registration_path %></li>
+              <li>
+                <%= link_to destroy_user_session_path, data: {turbo_method: :delete, status: :see_other, turbo_confirm: "ログアウトしますか？"} do %>
+                  <%= 'ログアウト' %>
+                <% end %>
+              </li>
+            </ul>
+          </details>
+        <% else %>
+          <div class="header-loggedout btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei px-8 text-lg mr-5">
+            <%= link_to "ログイン", new_user_session_path %>
+          </div>
+        <% end %>
       </li>
     </ul>
   </div>
 </div>
-
-
-
 
 
 
@@ -36,3 +52,4 @@
   <%= link_to "sign up", new_user_registration_path %> </ br>
   <%= link_to "sign in", new_user_session_path %>
 <% end %>
+
