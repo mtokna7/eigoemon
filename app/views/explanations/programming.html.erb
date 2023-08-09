@@ -9,9 +9,9 @@
     <h1 class="font-yusei text-6xl text-center text-blue-800">ないすちゅらい</h1>
 <% end %>
 
-<div class="flex justify-between">
+<div class="flex flex-col lg:flex-row items-center lg:justify-between">
   <!-- グループ1 -->
-  <div class="w-1/2">
+  <div class="w-full lg:w-1/2 mx-auto lg:mx-0">
     <div class="rounded shadow-md text-left bg-green-900 text-white ml-10 w-40 pt-3 pb-3 mt-16">
       <p class="font-rocknroll text-3xl ml-10">こたえ</p>
     </div>
@@ -31,7 +31,7 @@
   </div>
 
   <!-- グループ2 -->
-  <div class="w-1/2 mr-20 mt-10">
+  <div class="w-full lg:w-1/2 mx-auto lg:mx-0 lg:mr-20 mt-10">
     <div id="youglish-player"></div>
     <div id="youglish-widget" data-word="<%= @word.name %>"></div>
     <div class="ml-32">
