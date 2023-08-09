@@ -1,35 +1,51 @@
 <%= javascript_include_tag 'youglish' %>
-
-<h1>Explanations#programming</h1>
+<%= render 'shared/header' %>
 
 <% if @user_quiz_history.is_correct %>
-  <h2>Fantastic! You got it right! See the explanation below.</h2>
+  <h1 class="font-rowdies text-lg text-center text-rose-900 mt-5">Fantastic！</h1>
+  <h1 class="font-yusei text-6xl text-center text-rose-900">ふぁんてぇぁぁぁあすてぃっく！</h1>
 <% else %>
-  <h2>Almost there! Check out the explanation below to understand better.</h2>
+    <h1 class="font-rowdies text-lg text-center text-blue-800 mt-5">Nice try<span class="font-yusei text-lg text-center text-blue-900 mt-5">（惜しい！）</span></h1>
+    <h1 class="font-yusei text-6xl text-center text-blue-800">ないすちゅらい</h1>
 <% end %>
 
-<h3>こたえは <% parts = @word.parts %></h3>
-<%= parts[:first_part] %>
-<% if parts[:bold_part] %>
-  <strong class="font-bold tect-red-500"><%= parts[:bold_part] %></strong>
-<% end %>
-<%= parts[:last_part] %>
+<div class="flex justify-between">
+  <!-- グループ1 -->
+  <div class="w-1/2">
+    <div class="rounded shadow-md text-left bg-green-900 text-white ml-10 w-40 pt-3 pb-3 mt-16">
+      <p class="font-rocknroll text-3xl ml-10">こたえ</p>
+    </div>
+    <div class="font-yusei text-5xl text-left ml-28 mt-10 text-gray-800">
+      <% parts = @word.parts %>
+      <%= parts[:first_part] %>
+      <% if parts[:bold_part] %>
+        <strong class="text-black"><%= parts[:bold_part] %></strong>
+      <% end %>
+      <%= parts[:last_part] %>
+    </div>
+    <p class="font-rowdies mx-auto text-8xl text-left ml-28"><%= @word.name %></p>
+    <div class="rounded shadow-md text-left bg-green-900 text-white pt-3 pb-3 w-96 mt-14 ml-10">
+      <p class="font-rocknroll text-3xl ml-5">プログラミングてき解説</p>
+    </div>
+    <p class="font-yusei text-2xl ml-10 break-words mt-10"><%= @word.programming_explanation %></p>
+  </div>
 
-<h3>プログラミングではこんなふうに使うよ</h3>
-  <p><%= @word.programming_explanation %></p>
+  <!-- グループ2 -->
+  <div class="w-1/2 mr-20 mt-10">
+    <div id="youglish-player"></div>
+    <div id="youglish-widget" data-word="<%= @word.name %>"></div>
+    <div class="ml-32">
+      <button id="play-button" class="btn btn-primary">再生</button>
+      <button id="pause-button" class="btn btn-secondary">停止</button>
+      <button id="repeat-button" class="btn btn-secondary">繰り返す</button>
+      <button id="next-button" class="btn btn-primary">つぎの動画へ</button>
+      <button id="prev-button" class="btn btn-secondary">まえの動画へ</button>
+    </div>
+  </div>
+</div>
 
-<h3>ここにyouglishAPI</h3>
-<h1><%= @word.name %></h1>
-
-<div id="youglish-player"></div>
-<div id="youglish-widget" data-word="<%= @word.name %>"></div>
-<!-- Control buttons -->
-<button id="play-button" class="btn btn-primary">Play</button>
-<button id="pause-button" class="btn btn-secondary">Pause</button>
-<button id="repeat-button" class="btn btn-secondary">Repeat</button>
-
-
-
-<%= link_to 'もう1問！', quiz_path(Quiz.all.pluck(:id).sample), class: 'btn btn-primary' %>
-<%= link_to 'Topへ戻る', root_path, class: 'btn btn-secondary' %>
-<%= link_to 'メモする(準備中)','#', class: 'btn btn-thrdry' %>
+<div class="text-right mr-10">
+  <%= link_to 'メモする(準備中)','#', class: 'btn font-rocknroll' %>
+  <%= link_to 'Xでシェア(準備中)','#', class: 'btn font-rocknroll' %>
+  <%= link_to 'もう1問！', quiz_path(Quiz.all.pluck(:id).sample), class: 'btn bg-orange-600 hover:bg-orange-500 font-rocknroll text-white' %>
+</div>

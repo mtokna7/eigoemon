@@ -38,18 +38,3 @@
     </ul>
   </div>
 </div>
-
-
-
-<h1>ヘッダーのパーシャル※ログアウト前後でヘッダーのパーシャル分けるんだっけ？</h1>
-<% if user_signed_in? %>
-  名前：<%= current_user.name %>
-  <%= link_to "Edit", edit_user_registration_path %>
-  <%= link_to destroy_user_session_path, data: {turbo_method: :delete, status: :see_other, turbo_confirm: "ログアウトしますか？"} do %>
-    <%= (t 'defaults.logout') %>
-  <% end %>
-<% else %>
-  <%= link_to "sign up", new_user_registration_path %> </ br>
-  <%= link_to "sign in", new_user_session_path %>
-<% end %>
-
