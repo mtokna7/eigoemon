@@ -6,9 +6,9 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var widget;
 function onYouglishAPIReady(){
   widget = new YG.Widget("youglish-widget", {
-    width: 350,
+    width: 400,
     components:11, //検索・字幕・アクセント選択
-    autoStart: 0, // 自動再生off
+    autoStart: 1, // 自動再生on
     restrictionMode: 1, // キッズモードon
     events: {
       'onFetchDone': onFetchDone,
@@ -43,4 +43,12 @@ document.getElementById('pause-button').addEventListener('click', function() {
 
 document.getElementById('repeat-button').addEventListener('click', function() {
   widget.replay();
+});
+
+document.getElementById('next-button').addEventListener('click', function() {
+  widget.next();
+});
+
+document.getElementById('prev-button').addEventListener('click', function() {
+  widget.previous();
 });

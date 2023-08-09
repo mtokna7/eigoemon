@@ -1,14 +1,10 @@
-<div class="bg-base-200">
-  <header><%= render 'shared/header' %></header>
+<body class="relative min-h-screen">
+  <header class="fixed top-0 w-full"><%= render 'shared/header' %></header>
 
-  <button class="btn btn-primary">One</button>
-  <button class="btn btn-secondary">Two</button>
-  <button class="btn btn-accent btn-outline">Three</button> </ br>
-  <div class="mockup-code bg-primary text-primary-content">
-    <pre><code>テスト　can be any color!</code></pre>
+  <div class="md:absolute lg:top-2 lg:right-10 md:w-3/5 w-10/12 mt-12 md:mt-0 right-6 mx-auto -z-10 lg:w-3/6">
+    <%= image_tag("top.jpeg", alt: "Top Image", class: "mx-auto w-1/2 lg:pt-39 mt-20") %>
   </div>
+  
+</body>
 
-  <footer><%= render 'shared/footer' %></footer>
-</div>
-
-
+<p>ここにフッター</p>
