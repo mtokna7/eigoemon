@@ -1,24 +1,27 @@
+const quiz_id = document.body.getAttribute('data-quiz-id');
 var levelUpModal = document.getElementById("level-up-modal");
-levelUpModal.showModal();
-
 let currentConversationIndex = 0;
-const conversations = window.conversationsData;
-const speakers = window.speakersData;
+let conversations;
+let speakers;
 
-// ここで初期の会話文を設定
-document.getElementById("conversation-content").textContent = conversations[currentConversationIndex];
+// showModal()メソッドの直後でデータを取得
+levelUpModal.showModal();
+fetch(`/api/v1/quizzes/${quiz_id}/conversations`)
+    .then(response => response.json())
+    .then(data => {
+      conversations = data.conversations;
+      speakers = data.speakers; 
+      document.getElementById("conversation-content").textContent = conversations[currentConversationIndex].content;
+    });
 
 document.getElementById("next-button").addEventListener("click", function() {
   currentConversationIndex++;
   if (currentConversationIndex < conversations.length) {
-    document.getElementById("conversation-content").textContent = conversations[currentConversationIndex];
-    // ここで、speakerに応じて表示を変更することも可能です。
+    document.getElementById("conversation-content").textContent = conversations[currentConversationIndex].content;
   } else {
     closeModal();
   }
 });
-
-
 
 function closeModal() {
   levelUpModal.close();
