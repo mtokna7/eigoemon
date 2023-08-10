@@ -1,9 +1,16 @@
 <dialog id="level-up-modal" class="modal">
   <form method="dialog" class="modal-box w-11/12 max-w-5xl mx-auto">
-    <h3 class="text-2xl font-dotgothic font-bold text-center text-violet-900 mb-1">おめでとう！ユーザーレベルがあがったよ！</h3>
-    <div class="flex space-x-4">
-      <%= image_tag("keshiki.png", alt: "Conversation Image") %>
-    </div>
+    <% if @user.level == 0 %>
+      <h3 class="text-2xl font-dotgothic font-bold text-center text-violet-900 mb-1">プロローグ</h3>
+      <div class="flex space-x-4">
+        <%= image_tag("keshiki.png", alt: "Prologue Image") %>
+      </div>
+    <% else %>
+      <h3 class="text-2xl font-dotgothic font-bold text-center text-violet-900 mb-1">おめでとう！ユーザーレベルがあがったよ！</h3>
+      <div class="flex space-x-4">
+        <%= image_tag("keshiki.png", alt: "Conversation Image") %>
+      </div>
+    <% end %>
     <div class="flex md:flex-row flex-col mt-2">
       <p id="conversation-content" class="font-dotgothic text-lg bg-black text-white flex-grow py-1 flex items-center">conversations</p>
       <button type="button" class="btn font-dotgothic md:ml-4 ml-auto mr-auto mt-2 md:mt-0" id="next-button">つぎへ</button>

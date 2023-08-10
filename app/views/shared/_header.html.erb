@@ -5,18 +5,17 @@
   <div class="flex-none">
     <ul class="menu menu-horizontal px-3 text-xl font-yusei">
       <li>
-        <details>
-          <summary class="btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white mr-10 px-8 text-lg">
-            おためし
-          </summary>
-          <ul class="p-2 bg-base-100 hover:bg-base-200">
-            <li><a>もんだい</a></li>
-            <li><a>図書館</a></li>
-          </ul>
-        </details>
+        <% if user_signed_in? %>
+          <div class="header-loggedout btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei px-8 text-lg mr-5">
+          <%= link_to "もんだい", quiz_path(Quiz.all.pluck(:id).sample) %>
+        </div>
       </li>
       <li>
-        <% if user_signed_in? %>
+        <div class="header-loggedout btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei px-8 text-lg mr-5">
+          <%= link_to "図書館", words_path %>
+        </div>
+      </li>
+      <li>
           <details>
             <summary class="btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei px-8 text-lg mr-5"><%= current_user.name %></summary>
             <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box text-lg">
@@ -29,10 +28,23 @@
               </li>
             </ul>
           </details>
+      </li>
         <% else %>
-          <div class="header-loggedout btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei px-8 text-lg mr-5">
-            <%= link_to "ログイン", new_user_session_path %>
-          </div>
+      <li>
+        <details>
+          <summary class="btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white mr-10 px-8 text-lg">
+            おためし
+          </summary>
+          <ul class="p-2 bg-base-100 hover:bg-base-200">
+            <li><a>もんだい</a></li>
+            <li><a>図書館</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <div class="header-loggedout btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei px-8 text-lg mr-5">
+          <%= link_to "ログイン", new_user_session_path %>
+        </div>
         <% end %>
       </li>
     </ul>
