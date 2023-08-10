@@ -1,0 +1,20 @@
+<%= render 'shared/header' %>
+<h1>Words List</h1>
+  <p class="mx-auto text-2xl text-center font-yusei break-words text-rose-900 mt-3">※ 次のページでは音が出るから気をつけてね</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @words.each do |word| %>
+      <tr>
+        <td>
+          <%= link_to word.name, english_explanation_path(word) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

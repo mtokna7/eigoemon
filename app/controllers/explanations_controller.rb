@@ -6,6 +6,7 @@ class ExplanationsController < ApplicationController
   end
 
   def english
+    @word = Word.find(params[:id])
   end
 end
 
