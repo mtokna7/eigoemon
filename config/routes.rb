@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'explanations/english'
   devise_for :users
   resources :quizzes, only: %i[show index]
+  resources :words, only: [:index]
   resources :users, only: [] do
     resources :dialogues, only: [:index]
   end  
