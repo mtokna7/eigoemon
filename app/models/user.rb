@@ -24,15 +24,15 @@ class User < ApplicationRecord
 
     case level
     when 0
-      if correct_count == 1
+      if correct_count == 2
         increase_level
       end
     when 1
-      if correct_count == 4
+      if correct_count == 6
         increase_level
       end
     when 2
-      if correct_count == 8
+      if correct_count == 10
         increase_level
       end
     when 3
