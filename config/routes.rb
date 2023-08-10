@@ -12,6 +12,15 @@ Rails.application.routes.draw do
       get :english
     end
   end
+  namespace :api do
+    namespace :v1 do
+      resources :quizzes, only: [] do
+        member do
+          get :conversations
+        end
+      end
+    end
+  end
 
   get 'pages/privacy'
   get 'pages/terms'
