@@ -3,11 +3,11 @@
     <%= link_to 'はつめい屋 英語えもん', root_path, class: 'btn bg-rose-900 hover:bg-rose-800 text-white text-xl font-yusei ml-10' %>
   </div>
   <div class="flex-none">
-    <ul class="menu menu-horizontal px-3 text-xl font-yusei">
+    <ul class="menu menu-horizontal px-3 text-xl font-yusei text-base-200">
       <li>
         <% if user_signed_in? %>
           <div class="header-loggedout btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei px-8 text-lg mr-5">
-          <%= link_to "もんだい", quiz_path(Quiz.all.pluck(:id).sample) %>
+          <%= link_to "START（もんだい）", quiz_path(Quiz.all.pluck(:id).sample) %>
         </div>
       </li>
       <li>
@@ -18,10 +18,10 @@
       <li>
           <details>
             <summary class="btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei px-8 text-lg mr-5"><%= current_user.name %></summary>
-            <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box text-lg">
+            <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-300 rounded-box text-lg">
               <li class="text-rose-900">ユーザーレベル：<%= current_user.level %></li>
-              <li><%= link_to "ユーザー編集", edit_user_registration_path %></li>
-              <li>
+              <li class="text-black"><%= link_to "ユーザー編集", edit_user_registration_path %></li>
+              <li class="text-black">
                 <%= link_to destroy_user_session_path, data: {turbo_method: :delete, status: :see_other, turbo_confirm: "ログアウトしますか？"} do %>
                   <%= 'ログアウト' %>
                 <% end %>
@@ -35,7 +35,7 @@
           <summary class="btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white mr-10 px-8 text-lg">
             おためし
           </summary>
-          <ul class="p-2 bg-base-100 hover:bg-base-200">
+          <ul class="p-2 bg-base-300 text-black text-lg">
             <li><a>もんだい</a></li>
             <li><a>図書館</a></li>
           </ul>
