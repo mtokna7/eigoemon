@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
     case level
     when 0
-      if correct_count == 1 #ここを変更したらモーダル表示のロジックに変更がいる
+      if correct_count == 2
         increase_level
       end
     when 1
