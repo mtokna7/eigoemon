@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  get 'explanations/programming'
-  get 'explanations/english'
   devise_for :users
   resources :quizzes, only: %i[show index]
-  resources :words, only: [:index]
+  resources :words, only: %i[index]
+  resources :tutorials, only: %i[show] do
+    get 'quiz_explanation', on: :member
+    get 'next', on: :member
+  end
   resources :users, only: [] do
-    resources :dialogues, only: [:index]
+    resources :dialogues, only: %i[index]
   end  
   resources :explanations, only: [] do
     member do
