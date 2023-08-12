@@ -28,11 +28,11 @@ class User < ApplicationRecord
         increase_level
       end
     when 1
-      if correct_count == 6
+      if correct_count == 7
         increase_level
       end
     when 2
-      if correct_count == 10
+      if correct_count == 13
         increase_level
       end
     when 3
