@@ -1,5 +1,5 @@
 class TutorialsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[quiz_show quiz_explanation next]
+  skip_before_action :authenticate_user!, only: %i[quiz_show quiz_explanation next library_index library_explanation]
   before_action :set_quiz_sequence, only: %i[quiz_show quiz_explanation next]
   before_action :load_quiz, only: %i[quiz_show quiz_explanation]
 
@@ -19,13 +19,17 @@ class TutorialsController < ApplicationController
   end
 
   def library_index
-    @words = Word.all
+    @words = Word.order(:name).all
+  end
+
+  def library_explanation
+    @word = Word.find(params[:word_id])
   end
 
   private
 
   def set_quiz_sequence
-    @sequence = [1, 5, 4]
+    @sequence = [1, 7, 4]
     if session[:quiz_index].nil? || session[:quiz_index] >= @sequence.size
       session[:quiz_index] = 0
     end
