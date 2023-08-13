@@ -1,9 +1,9 @@
 class TutorialsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[show quiz_explanation next]
-  before_action :set_quiz_sequence, only: %i[show quiz_explanation next]
-  before_action :load_quiz, only: %i[show quiz_explanation]
+  skip_before_action :authenticate_user!, only: %i[quiz_show quiz_explanation next]
+  before_action :set_quiz_sequence, only: %i[quiz_show quiz_explanation next]
+  before_action :load_quiz, only: %i[quiz_show quiz_explanation]
 
-  def show
+  def quiz_show
     @word_name = @quiz.word.name
     @quiz_choices = @quiz.quiz_choices
   end
@@ -16,6 +16,10 @@ class TutorialsController < ApplicationController
 
   def next
     next_quiz
+  end
+
+  def library_index
+    @words = Word.all
   end
 
   private
@@ -37,9 +41,9 @@ class TutorialsController < ApplicationController
     
     if session[:quiz_index] >= @sequence.size
       session[:quiz_index] = 0
-      redirect_to tutorial_path(@sequence[0])
+      redirect_to quiz_show_tutorial_path(@sequence[0])
     else
-      redirect_to tutorial_path(@sequence[session[:quiz_index]])
+      redirect_to quiz_show_tutorial_path(@sequence[session[:quiz_index]])
     end
   end
 end
