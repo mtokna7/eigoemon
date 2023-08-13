@@ -1,0 +1,49 @@
+<%= render 'shared/header' %>
+
+<% if @is_correct %>
+  <h1 class="font-rowdies text-lg text-center text-rose-900 mt-5">Fantastic！</h1>
+  <h1 class="font-yusei text-6xl text-center text-rose-900">ふぁんてぇぁぁぁあすてぃっく！</h1>
+<% else %>
+    <h1 class="font-rowdies text-lg text-center text-blue-800 mt-5">Nice try</h1>
+    <h1 class="font-yusei text-6xl text-center text-blue-800">ないすちゅらい（惜しい）</h1>
+<% end %>
+
+<div class="flex flex-col lg:flex-row items-center lg:justify-between">
+  <!-- グループ1 -->
+  <div class="w-full lg:w-1/2 mx-auto lg:mx-0">
+    <div class="rounded shadow-md text-left bg-green-900 text-white ml-10 w-40 pt-3 pb-3 mt-16">
+      <p class="font-rocknroll text-3xl ml-10">こたえ</p>
+    </div>
+    <div class="font-yusei text-5xl text-left ml-28 mt-10 text-gray-800">
+      <% parts = @word.parts %>
+      <%= parts[:first_part] %>
+      <% if parts[:bold_part] %>
+        <strong class="text-black"><%= parts[:bold_part] %></strong>
+      <% end %>
+      <%= parts[:last_part] %>
+    </div>
+    <p class="font-rowdies mx-auto text-8xl text-left ml-28"><%= @word.name %></p>
+    <div class="rounded shadow-md text-left bg-green-900 text-white pt-3 pb-3 w-96 mt-14 ml-10">
+      <p class="font-rocknroll text-3xl ml-5">プログラミングてき解説</p>
+    </div>
+    <p class="font-yusei text-2xl ml-10 break-words mt-10"><%= @word.programming_explanation %></p>
+  </div>
+
+  <!-- グループ2 -->
+  <div class="w-full lg:w-1/2 mx-auto lg:mx-0 lg:mr-20 mt-10">
+    <div id="youglish-player"></div>
+    <div id="youglish-widget" data-word="<%= @word.name %>"></div>
+    <div class="ml-32">
+      <button id="play-button" class="btn btn-primary">再生</button>
+      <button id="pause-button" class="btn btn-secondary">停止</button>
+      <button id="next-button" class="btn btn-primary">つぎの動画へ</button>
+      <button id="prev-button" class="btn btn-secondary">まえの動画へ</button>
+      <button id="repeat-button" class="btn btn-secondary">繰り返す</button>
+    </div>
+  </div>
+</div>
+
+<div class="text-right mr-10">
+    <%= link_to "次の問題へ", next_tutorial_path(@quiz), method: :get , class: 'btn bg-blue-600 hover:bg-blue-500 font-yusei text-white' %>
+    <%= link_to '会員登録', new_user_registration_path, class: 'btn bg-orange-600 hover:bg-orange-500 font-yusei text-white' %>
+</div>

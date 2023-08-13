@@ -1,3 +1,4 @@
+<header class="op-0 w-full"><%= render 'shared/header' %></header>
 <div class="hero min-h-screen bg-base-200">
   <div class="hero-content flex-col lg:flex-row-reverse">
     <div class="text-center lg:text-left">
@@ -26,12 +27,12 @@
           <div class="form-control">
             <label class="label">
               <span class="label-text"><%= f.label :password %></span>
+              <p class="text-xs text-gray-600 mt-2">この欄はパスワードを変更したいときだけ入力してね！</p>
             </label>
             <%= f.password_field :password, autocomplete: "new-password", class: "input input-bordered" %>
             <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> characters minimum)</em>
             <% end %>
-            <p class="text-xs text-gray-600 mt-2">If you want to change your password, please input new password here. Otherwise, leave this field blank.</p>
           </div>
           <div class="form-control">
             <label class="label">
@@ -42,6 +43,7 @@
           <div class="form-control">
             <label class="label">
               <span class="label-text"><%= f.label :current_password %></span>
+                             <p class="text-xs text-gray-600 mt-2 ml-3">※必須</p>
             </label>
             <%= f.password_field :current_password, autocomplete: "current-password", class: "input input-bordered" %>
           </div>

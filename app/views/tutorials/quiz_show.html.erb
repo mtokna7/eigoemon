@@ -1,5 +1,6 @@
 <%= render 'shared/header' %>
-<body data-quiz-id="<%= @quiz.id %>" class="text-black bg-white">  <h1 class="font-bold mt-5 text-6xl text-center pb-5 font-yusei">もんだい！</h1>
+<body data-quiz-id="<%= @quiz.id %>" class="text-black bg-white">
+  <h1 class="font-bold mt-5 text-6xl text-center pb-5 font-yusei">もんだい！</h1>
   <p class="mx-auto text-4xl text-center font-rocknroll break-words">どっちのふりがながそれっぽい発音になると思う？</p>
   <p class="mx-auto text-2xl text-center font-yusei break-words text-rose-900 mt-3">※ 次のページでは音が出るから気をつけてね</p>
 
@@ -13,7 +14,7 @@
         <div class="w-96 h-48 p-6 mx-6 my-2 <%= bg_color %> rounded shadow-md text-5xl text-center font-yusei flex items-center justify-center mt-10">
           <% parts = choice.parts %>
 
-          <%= link_to programming_explanation_path(id: @quiz.word.id, choice_id: choice.id), method: :get, class: "text-gray-800 text-decoration-none" do %>
+          <%= link_to quiz_explanation_tutorial_path(id: @quiz.word.id, choice_id: choice.id), method: :get, class: "text-gray-800 text-decoration-none" do %>
             <%= parts[:first_part] %>
             <% if parts[:bold_part] %>
               <strong class="text-black"><%= parts[:bold_part] %></strong>
@@ -24,5 +25,3 @@
       <% end %>
     </div>
   </div>
-
-

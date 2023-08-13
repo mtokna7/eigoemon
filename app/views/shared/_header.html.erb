@@ -36,13 +36,13 @@
             おためし
           </summary>
           <ul class="p-2 bg-base-300 text-black text-lg">
-            <li><a>もんだい</a></li>
-            <li><a>図書館</a></li>
+            <li><%= link_to 'もんだい（3問）', quiz_show_tutorial_path(1) %></li>
+            <li><%= link_to '図書館(3単語)', library_index_tutorials_path %></li>
           </ul>
         </details>
       </li>
         <div class="header-loggedout btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei px-8 text-lg mr-3">
-          <%= link_to "会員登録", new_user_registration_path %>
+          <%= link_to '会員登録', new_user_registration_path %>
         </div>
       <li>
         <div class="header-loggedout btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei px-8 text-lg mr-5">
