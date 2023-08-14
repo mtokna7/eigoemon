@@ -2,7 +2,7 @@ module ApplicationHelper
   def default_meta_tags
     {
       site: 'はつめい屋 英語えもん',
-      title: '学ばなくてもよいことだけが楽しく学べるサービスです。',
+      title: 'わざわざ学ばなくてもよいことだけを楽しく学べるサービスです。',
       reverse: true,
       charset: 'utf-8',
       description: '英語えもんを使って、プログラミングで頻出する英単語をネイティブっぽく読んでみよう！',
