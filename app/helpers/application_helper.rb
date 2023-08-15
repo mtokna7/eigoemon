@@ -21,7 +21,7 @@ module ApplicationHelper
       # Twitter用の設定を個別で設定する
       twitter: {
         card: 'summary_large_image',
-        image: image_url('ogp.png')
+        image: image_url('ogp2.png')
       }
     }
   end
