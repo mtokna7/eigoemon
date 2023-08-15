@@ -8,7 +8,7 @@ class User < ApplicationRecord
   scope :not_attempted_quiz_for_a_month, -> {
     left_joins(:user_quiz_histories)
     .group('users.id')
-    .having('MAX(user_quiz_histories.created_at) < ?', 1.month.ago)
+    .having('MAX(user_quiz_histories.created_at) < ?', 1.hour.ago)#1.month.agoに
     .or(User.where.not(id: UserQuizHistory.select(:user_id)))
   }
   
