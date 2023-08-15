@@ -20,6 +20,11 @@ module.exports = {
         'rocknroll': ['RocknRoll One', 'sans-serif'],
         'rowdies': ['Rowdies', 'cursive'],
         'yusei': ['Yusei Magic', 'sans-serif']
+      },
+      width: {
+        '108': '27rem',
+        '120': '30rem', // 480px
+        '144': '36rem', // 576px
       }
     }
   },

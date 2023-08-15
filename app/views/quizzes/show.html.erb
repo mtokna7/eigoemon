@@ -12,7 +12,7 @@
     <div class="flex flex-col md:flex-row justify-center items-center">
     <% @quiz_choices.shuffle.each_with_index do |choice, index| %>  
         <% bg_color = index == 0 ? 'bg-blue-500 hover:bg-blue-400' : 'bg-yellow-500 hover:bg-yellow-400' %>
-        <div class="w-96 h-48 p-6 mx-6 my-2 <%= bg_color %> rounded shadow-md text-5xl text-center font-yusei flex items-center justify-center mt-10">
+        <div class="w-120 h-48 p-6 mx-6 my-2 <%= bg_color %> rounded shadow-md text-5xl text-center font-yusei flex items-center justify-center mt-10">
           <% parts = choice.parts %>
 
           <%= link_to programming_explanation_path(id: @quiz.word.id, choice_id: choice.id), method: :get, class: "text-gray-800 text-decoration-none" do %>
