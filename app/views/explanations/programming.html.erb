@@ -37,8 +37,8 @@
     <div class="ml-32">
       <button id="play-button" class="btn btn-primary">再生</button>
       <button id="pause-button" class="btn btn-secondary">停止</button>
-      <button id="next-button" class="btn btn-primary">つぎの動画へ</button>
-      <button id="prev-button" class="btn btn-secondary">まえの動画へ</button>
+      <button id="next-button" class="btn btn-primary">つぎの動画</button>
+      <button id="prev-button" class="btn btn-secondary">まえの動画</button>
       <button id="repeat-button" class="btn btn-secondary">繰り返す</button>
     </div>
   </div>
@@ -47,5 +47,5 @@
 <div class="text-right mr-10">
   <%= link_to 'メモする(準備中)','#', class: 'btn font-rocknroll' %>
   <%= link_to 'Xでシェア', "https://twitter.com/intent/tweet?text=「#{@word.name}」は「#{@word.furigana}」って言ってみよっと！&hashtags=eigoemon&url=#{root_url}", class: 'btn font-rocknroll bg-blue-600 hover:bg-blue-500 text-white', target: "_blank", class: 'btn font-rocknroll bg-blue-600 hover:bg-blue-500 text-white', target: "_blank" %>
-  <%= link_to 'もう1問！', quiz_path(Quiz.all.pluck(:id).sample), class: 'btn bg-orange-600 hover:bg-orange-500 font-rocknroll text-white' %>
+  <%= link_to 'もう1問！', quiz_path(Quiz.all.pluck(:id).sample), class: 'btn bg-orange-600 hover:bg-orange-500 text-white' %>
 </div>
