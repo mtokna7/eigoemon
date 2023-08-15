@@ -15,7 +15,7 @@ module ApplicationHelper
         description: :description,
         type: 'website',
         url: request.original_url,
-        image: image_url('ogp.png'),
+        image: image_url('ogp2.png'),
         local: 'ja-JP'
       },
       # Twitter用の設定を個別で設定する
