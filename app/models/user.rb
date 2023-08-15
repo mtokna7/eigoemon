@@ -4,6 +4,13 @@ class User < ApplicationRecord
   has_many :user_quiz_histories, dependent: :destroy
 
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+
+  scope :not_attempted_quiz_for_a_month, -> {
+    left_joins(:user_quiz_histories)
+    .group('users.id')
+    .having('MAX(user_quiz_histories.created_at) < ?', 1.month.ago)
+    .or(User.where.not(id: UserQuizHistory.select(:user_id)))
+  }
   
   def record_quiz_history(quiz_choice)
     word_id = quiz_choice.quiz.word_id
