@@ -22,10 +22,7 @@ module.exports = {
         'yusei': ['Yusei Magic', 'sans-serif']
       },
       width: {
-        '108': '27rem',
-        '112': '28rem',
-        '116': '29rem',
-        '120': '30rem',
+        '124': '31rem', 
       }
     }
   },
