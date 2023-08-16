@@ -1,18 +1,21 @@
 <%= render 'shared/header' %>
-<p class="mx-auto text-3xl text-center font-yusei break-words mt-5">おためしでは <span class = "text-rose-900">sequence</span>・<span class = "text-rose-900">through</span>・<span class = "text-rose-900">width</span> の3単語の詳細を見ることができるよ！</p>
+<p class="mx-auto text-3xl text-center font-yusei break-words mt-5">おためしでは <span class="text-rose-900">sequence</span>・<span class="text-rose-900">through</span>・<span class="text-rose-900">width</span> の3単語の詳細を見ることができるよ！</p>
 <p class="mx-auto text-3xl text-center font-yusei break-words mt-2">いちらんから探してクリックしてみよう！</p>
 <p class="mx-auto text-3xl text-center font-yusei break-words text-rose-900 mt-8">※ 次のページでは音が出るから気をつけてね</p>
 
-<div class="mockup-code mt-3 mb-10 mx-28 bg-gray-600 text-white">
+<div class="mockup-code mt-3 mx-28 bg-gray-600 text-white p-3 pb-52 mb-20">
   <% @words.each do |word| %>
-    <% if word.id == 1 || word.id == 4 || word.id == 7 %>
-      <code class="hover:bg-blue-300 hover:text-gray-900 text-2xl px-3 ml-1 text-blue-300">
-        <%= link_to word.name, library_explanation_tutorials_path(word_id: word.id) %>
-      </code>
-    <% else %>
-      <code class="hover:bg-yellow-500 hover:text-gray-900 text-2xl px-3 ml-1">
-        <%= word.name %>
-      </code>
-    <% end %>
+    <div class="m-3 inline-block">
+      <% if word.id == 1 || word.id == 4 || word.id == 7 %>
+        <code class="hover:bg-blue-300 hover:text-gray-900 text-2xl px-3 text-blue-300">
+          <%= link_to word.name, library_explanation_tutorials_path(word_id: word.id) %>
+        </code>
+      <% else %>
+        <code class="hover:bg-yellow-500 hover:text-gray-900 text-2xl px-3">
+          <%= word.name %>
+        </code>
+      <% end %>
+    </div>
   <% end %>
 </div>
+
