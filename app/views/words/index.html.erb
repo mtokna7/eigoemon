@@ -1,11 +1,13 @@
 <%= render 'shared/header' %>
-<p class="mx-auto text-4xl text-center font-rocknroll break-words">気になる単語をクリック！</p>
+<p class="mx-auto text-4xl text-center font-rocknroll break-words mt-5">気になる単語をクリック！</p>
 <p class="mx-auto text-2xl text-center font-yusei break-words text-rose-900 mt-3">※ 次のページでは音が出るから気をつけてね</p>
 
-<div class="mockup-code mt-3 mx-28 bg-gray-600 text-white">
+<div class="mockup-code mt-3 mx-28 bg-gray-600 text-white p-3 pb-52 mb-20">
     <% @words.each do |word| %>
-      <code class="hover:bg-yellow-500 hover:text-gray-900 text-lg px-3 ml-1">
-        <%= link_to word.name, english_explanation_path(word) %>
-      </code>
+      <div class="m-3 inline-block">
+        <code class="hover:bg-yellow-500 hover:text-gray-900 text-2xl px-3">
+          <%= link_to word.name, english_explanation_path(word) %>
+        </code>
+      </div>
     <% end %>
 </div>
