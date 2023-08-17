@@ -19,6 +19,5 @@
 
 # Learn more: http://github.com/javan/whenever
 every :day, at: '12:00pm' do
-  runner "User.not_attempted_quiz_for_a_month.each { |user| UserMailer.reminder_email(user).deliver_now }"
+  runner "User.not_logged_in_for_a_month.each { |user| UserMailer.reminder_email(user).deliver_now }"
 end
-  
