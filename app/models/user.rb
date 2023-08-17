@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :user_quiz_histories, dependent: :destroy
 
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  before_create :set_last_sign_in_at
 
   def after_database_authentication
     super
@@ -50,5 +51,9 @@ class User < ApplicationRecord
   def increase_level
     increment!(:level)
     update!(leveled_up: true)
+  end
+
+  def set_last_sign_in_at
+    self.last_sign_in_at = Time.current
   end
 end
