@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: 'users/sessions' }
+  devise_for :users
   resources :quizzes, only: %i[show index]
   resources :words, only: %i[index]
   resources :tutorials, only: [] do

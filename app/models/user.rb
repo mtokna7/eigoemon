@@ -5,6 +5,11 @@ class User < ApplicationRecord
 
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
+  def after_database_authentication
+    super
+    update(last_sign_in_at: Time.current)
+  end
+
   def record_quiz_history(quiz_choice)
     word_id = quiz_choice.quiz.word_id
     is_correct = quiz_choice.is_correct
