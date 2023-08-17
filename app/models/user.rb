@@ -12,8 +12,6 @@ class User < ApplicationRecord
     .or(User.where.not(id: UserQuizHistory.select(:user_id)))
   }
   
-  after_create :send_welcome_email
-
   def record_quiz_history(quiz_choice)
     word_id = quiz_choice.quiz.word_id
     is_correct = quiz_choice.is_correct
