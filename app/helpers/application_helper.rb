@@ -2,11 +2,11 @@ module ApplicationHelper
   def default_meta_tags
     {
       site: 'はつめい屋 英語えもん',
-      title: 'わざわざ学ばなくてもよいことだけを楽しく学べるサービスです。',
+      title: 'プログラミングで頻出する英単語をネイティブ「っぽく」読めるようになるサービス',
       reverse: true,
       charset: 'utf-8',
-      description: '英語えもんを使って、プログラミングで頻出する英単語をネイティブっぽく読んでみよう！',
-      keywords: '英語,発音,プログラミング,娯楽',
+      description: 'わざわざ学ばなくてもよいことを、たまにはわざわざ学んでみよう！',
+      keywords: '英語,発音,プログラミング,クイズ',
       canonical: request.original_url,
       separator: '|',
       og: {
