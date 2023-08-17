@@ -5,11 +5,6 @@ class User < ApplicationRecord
 
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
-  scope :not_logged_in_for_a_month, -> {
-    where('last_sign_in_at < ?', 1.month.ago)
-    .where('reminder_sent_at IS NULL OR reminder_sent_at < ?', 1.minute.ago) #month
-  }
-
   def record_quiz_history(quiz_choice)
     word_id = quiz_choice.quiz.word_id
     is_correct = quiz_choice.is_correct
