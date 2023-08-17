@@ -7,4 +7,3 @@ namespace :send_reminder_emails do
     end
   end
 end
-  
