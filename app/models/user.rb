@@ -12,6 +12,8 @@ class User < ApplicationRecord
     .or(User.where.not(id: UserQuizHistory.select(:user_id)))
   }
   
+  after_create :send_welcome_email
+
   def record_quiz_history(quiz_choice)
     word_id = quiz_choice.quiz.word_id
     is_correct = quiz_choice.is_correct
@@ -52,5 +54,9 @@ class User < ApplicationRecord
   def increase_level
     increment!(:level)
     update!(leveled_up: true)
+  end
+
+  def send_welcome_email
+    UserMailer.welcome_email(self).deliver_now
   end
 end
