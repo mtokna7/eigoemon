@@ -4,11 +4,12 @@ class User < ApplicationRecord
   has_many :user_quiz_histories, dependent: :destroy
 
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  before_create :set_last_sign_in_at
 
-  scope :not_logged_in_for_a_month, -> {
-    where('last_sign_in_at < ?', 1.month.ago)
-    .where('reminder_sent_at IS NULL OR reminder_sent_at < ?', 1.minute.ago) #month
-  }
+  def after_database_authentication
+    super
+    update(last_sign_in_at: Time.current)
+  end
 
   def record_quiz_history(quiz_choice)
     word_id = quiz_choice.quiz.word_id
@@ -50,5 +51,9 @@ class User < ApplicationRecord
   def increase_level
     increment!(:level)
     update!(leveled_up: true)
+  end
+
+  def set_last_sign_in_at
+    self.last_sign_in_at = Time.current
   end
 end
