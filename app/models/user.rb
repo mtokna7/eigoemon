@@ -8,7 +8,7 @@ class User < ApplicationRecord
   scope :not_attempted_quiz_for_a_month, -> {
     left_joins(:user_quiz_histories)
     .group('users.id')
-    .having('MAX(user_quiz_histories.created_at) < ?', 1.hour.ago)#1.month.agoに
+    .having('MAX(user_quiz_histories.created_at) < ?', 1.month.ago)
     .or(User.where.not(id: UserQuizHistory.select(:user_id)))
   }
   
@@ -54,9 +54,5 @@ class User < ApplicationRecord
   def increase_level
     increment!(:level)
     update!(leveled_up: true)
-  end
-
-  def send_welcome_email
-    UserMailer.welcome_email(self).deliver_now
   end
 end
