@@ -30,18 +30,10 @@ class User < ApplicationRecord
 
     case level
     when 0
-      if correct_count == 2
+      if correct_count == 3
         increase_level
       end
     when 1
-      if correct_count == 7
-        increase_level
-      end
-    when 2
-      if correct_count == 13
-        increase_level
-      end
-    when 3
       if correct_count == 10000000 #本リリース時に修正
         increase_level
       end
