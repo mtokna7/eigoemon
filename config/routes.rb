@@ -9,9 +9,6 @@ Rails.application.routes.draw do
     get 'library_index', on: :collection
     get 'library_explanation/:word_id', to: 'tutorials#library_explanation', as: :library_explanation, on: :collection
   end
-  resources :users, only: [] do
-    resources :dialogues, only: %i[index]
-  end  
   resources :explanations, only: [] do
     member do
       get :programming
@@ -20,11 +17,7 @@ Rails.application.routes.draw do
   end
   namespace :api do
     namespace :v1 do
-      resources :quizzes, only: [] do
-        member do
-          get :conversations
-        end
-      end
+      resources :conversations, only: %i[index]
     end
   end
 

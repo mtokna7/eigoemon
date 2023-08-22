@@ -1,39 +1,11 @@
-<%= javascript_include_tag 'youglish' %>
 <%= render 'shared/header' %>
+<%= javascript_include_tag 'youglish' %>
 
 <div class="flex flex-col lg:flex-row items-center lg:justify-between">
   <!-- グループ1 -->
-  <div class="w-full lg:w-1/2 mx-auto lg:mx-0">
-    <div class="rounded shadow-md text-left bg-blue-900 text-white ml-10 pt-3 pb-3 mt-16 w-44">
-      <p class="font-rocknroll text-3xl ml-7">よみかた</p>
-    </div>
-    <div class="font-yusei text-5xl text-left ml-28 mt-10 text-gray-700">
-      <% parts = @word.parts %>
-      <%= parts[:first_part] %>
-      <% if parts[:bold_part] %>
-        <strong class="text-black"><%= parts[:bold_part] %></strong>
-      <% end %>
-      <%= parts[:last_part] %>
-    </div>
-    <p class="font-rowdies mx-auto text-8xl text-left ml-28"><%= @word.name %></p>
-    <div class="rounded shadow-md text-left bg-blue-900 text-white pt-3 pb-3 mt-14 ml-10 w-72">
-      <p class="font-rocknroll text-3xl ml-10">えいごてき解説</p>
-    </div>
-    <p class="font-yusei text-2xl ml-10 break-words mt-10"><%= @word.english_explanation %></p>
-  </div>
-
+  <%= render 'shared/english_explanation', word:@word %>
   <!-- グループ2 -->
-  <div class="w-full lg:w-1/2 mx-auto lg:mx-0 lg:mr-20 mt-10">
-    <div id="youglish-player"></div>
-    <div id="youglish-widget" data-word="<%= @word.name %>"></div>
-    <div class="ml-32">
-      <button id="play-button" class="btn btn-primary">再生</button>
-      <button id="pause-button" class="btn btn-secondary">停止</button>
-      <button id="next-button" class="btn btn-primary">つぎの動画</button>
-      <button id="prev-button" class="btn btn-secondary">まえの動画</button>
-      <button id="repeat-button" class="btn btn-secondary">繰り返す</button>
-    </div>
-  </div>
+  <%= render 'shared/youglish', word:@word %>
 </div>
 
 <div class="text-right mr-10">
