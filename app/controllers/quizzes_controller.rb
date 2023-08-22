@@ -12,8 +12,4 @@ class QuizzesController < ApplicationController
       @level_up = false
     end
   end  
-
-  def index
-    @quizzes = Quiz.all
-  end
 end
