@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :quizzes, only: %i[show index]
+  resources :quizzes, only: %i[show]
   resources :words, only: %i[index]
+  resources :conversations, only: %i[index]
   resources :tutorials, only: [] do
     get 'quiz_show', on: :member
     get 'quiz_explanation', on: :member
@@ -15,12 +16,7 @@ Rails.application.routes.draw do
       get :english
     end
   end
-  namespace :api do
-    namespace :v1 do
-      resources :conversations, only: %i[index]
-    end
-  end
-
+  
   get 'pages/privacy'
   get 'pages/terms'
   root "homes#top"
