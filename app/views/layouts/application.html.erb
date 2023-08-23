@@ -26,11 +26,6 @@
 
 
   <body>
-    <% if user_signed_in? %>
-      <script>
-        window.currentUserId = <%= current_user.id %>;
-      </script>
-    <% end %>
     <%= yield %>
     <footer><%= render 'shared/footer' %></footer>
   </body>
