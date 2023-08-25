@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       get :english
     end
   end
-  
+
   get 'pages/privacy'
   get 'pages/terms'
   root "homes#top"

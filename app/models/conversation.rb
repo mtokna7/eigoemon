@@ -3,8 +3,5 @@ class Conversation < ApplicationRecord
   validates :content, presence: true
   validates :speaker, presence: true
   validates :order, presence: true, uniqueness: { scope: :level }
-
-  
   enum speaker: { boku: 0, eigoemon: 1, anothers: 2 }
-  
 end
