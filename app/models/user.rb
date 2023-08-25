@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   before_create :set_last_sign_in_at
+  after_create :send_welcome_email
 
   def after_database_authentication
     super
@@ -47,5 +48,9 @@ class User < ApplicationRecord
 
   def set_last_sign_in_at
     self.last_sign_in_at = Time.current
+  end
+
+  def send_welcome_email
+    UserMailer.welcome_email(self).deliver_now
   end
 end
