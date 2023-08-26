@@ -5,4 +5,3 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-# Conversation.create!(level:1, content:"（ ぼく ）　？！？！　（・・・・なんだ、歌舞伎役者かな？）", speaker:0, order:1)
