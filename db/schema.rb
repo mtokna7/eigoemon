@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_17_135607) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_26_042611) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_17_135607) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "order", null: false
+    t.index ["order", "level"], name: "index_conversations_on_order_and_level", unique: true
   end
 
   create_table "quiz_choices", force: :cascade do |t|
