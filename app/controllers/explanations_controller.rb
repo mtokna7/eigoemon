@@ -9,4 +9,3 @@ class ExplanationsController < ApplicationController
     @word = Word.find(params[:id])
   end
 end
-

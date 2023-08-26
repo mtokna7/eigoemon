@@ -3,4 +3,3 @@ class WordsController < ApplicationController
     @words = Word.order(:name).all
   end
 end
-  

@@ -4,5 +4,3 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: '英語えもん (in the Edo era)')
   end
 end
-
-
