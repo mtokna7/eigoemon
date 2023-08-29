@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   resources :tutorials, only: [] do
     get 'quiz_show', on: :member
     get 'quiz_explanation', on: :member
-    get 'next', on: :member
     get 'library_index', on: :collection
     get 'library_explanation/:word_id', to: 'tutorials#library_explanation', as: :library_explanation, on: :collection
   end
