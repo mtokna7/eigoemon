@@ -8,7 +8,7 @@
   <%= render 'shared/youglish', word:@word %>
 </div>
 
-<div class="text-right mr-10">
+<div class="text-left ml-128">
   <%= link_to 'Xでシェア', "https://twitter.com/intent/tweet?text=「#{@word.name}」は「#{@word.furigana}」って言ってみよっと！&hashtags=eigoemon&url=#{root_url}", class: 'btn font-rocknroll bg-blue-600 hover:bg-blue-500 text-white', target: "_blank", class: 'btn font-rocknroll bg-blue-600 hover:bg-blue-500 text-white', target: "_blank" %>
-  <%= link_to 'もどる', words_path, class: 'btn bg-orange-700 hover:bg-orange-500 text-white' %>
+  <%= link_to 'もどる', words_path, class: 'btn bg-orange-600 hover:bg-orange-500 text-white font-yusei' %>
 </div>
