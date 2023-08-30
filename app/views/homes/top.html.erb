@@ -11,10 +11,12 @@
       </div>
 
       <!-- 中央のテキスト部分 -->
+      <% unless signed_in? %>
       <div class="mt-8 flex flex-col items-center justify-center">
         <p class="text-2xl font-yusei">まずは「おためし」ボタンをおして、このwebアプリが何をしようとしているのかを体感してこよう！</p>
         <p class="mt-2 text-2xl font-yusei">とはいえ事前情報がほしいひとのために、順に説明するよ。</p>
       </div>
+      <% end %>
 
       <!-- 下部の小さなカードと右寄せテキスト -->
       <div class="mt-20 w-full flex items-start">
