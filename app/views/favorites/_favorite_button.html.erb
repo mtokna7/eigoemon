@@ -1,0 +1,11 @@
+<turbo-frame id="favorite_button">
+<% if favorited %>
+  <%= link_to word_favorite_path(word), data: {turbo_method: :delete}, class: 'btn font-rocknroll' do %>
+    メモやめる
+  <% end %>
+<% else %>
+  <%= link_to word_favorite_path(word), data: {turbo_method: :post}, class: 'btn font-rocknroll' do %>
+    メモする
+  <% end %>
+<% end %>
+</turbo-frame>

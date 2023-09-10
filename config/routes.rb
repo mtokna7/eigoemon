@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :quizzes, only: %i[show]
-  resources :words, only: %i[index]
+  resources :words, only: %i[index] do
+    resource :favorite, only: %i[create destroy]
+  end
   resources :conversations, only: %i[index]
   resources :tutorials, only: [] do
     get 'quiz_show', on: :member
