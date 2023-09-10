@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_26_042611) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_10_041758) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_26_042611) do
     t.datetime "updated_at", null: false
     t.integer "order", null: false
     t.index ["order", "level"], name: "index_conversations_on_order_and_level", unique: true
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "word_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "word_id"], name: "index_favorites_on_user_id_and_word_id", unique: true
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+    t.index ["word_id"], name: "index_favorites_on_word_id"
   end
 
   create_table "quiz_choices", force: :cascade do |t|
@@ -83,6 +93,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_26_042611) do
     t.index ["name"], name: "index_words_on_name", unique: true
   end
 
+  add_foreign_key "favorites", "users"
+  add_foreign_key "favorites", "words"
   add_foreign_key "quiz_choices", "quizzes"
   add_foreign_key "quizzes", "words"
   add_foreign_key "user_quiz_histories", "quiz_choices"
