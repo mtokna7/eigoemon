@@ -6,14 +6,25 @@
     <ul class="menu menu-horizontal px-3 text-xl font-yusei text-base-200">
       <li>
         <% if user_signed_in? %>
-          <div class="header-loggedout btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei px-8 text-lg mr-5">
+          <div class="header-loggedout btn bg-blue-600 hover:bg-blue-500 text-white hover:text-white font-yusei px-8 text-lg mr-5">
           <%= link_to "START（もんだい）", quiz_path(Quiz.all.pluck(:id).sample) %>
         </div>
       </li>
       <li>
-        <div class="header-loggedout btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei px-8 text-lg mr-5">
+        <div class="header-loggedout btn bg-blue-600 hover:bg-blue-500 text-white hover:text-white font-yusei px-8 text-lg mr-5">
           <%= link_to "図書館", words_path %>
         </div>
+      </li>
+      <li>
+        <details>
+          <summary class="btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white mr-4 px-8 text-lg">
+            ふくしゅう
+          </summary>
+          <ul class="p-2 bg-base-300 text-black text-lg">
+            <li>  <%= link_to 'メモした単語', favorites_path %></li>
+            <li><%= link_to '準備中', '#' %></li>
+          </ul>
+        </details>
       </li>
       <li>
           <details>
