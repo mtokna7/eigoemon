@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :words, only: %i[index] do
     resource :favorite, only: %i[create destroy]
   end
+  resources :favorites, only: %i[index show]
   resources :conversations, only: %i[index]
   resources :tutorials, only: [] do
     get 'quiz_show', on: :member
