@@ -9,4 +9,11 @@ class Quiz < ApplicationRecord
 
     ((correct.to_f / total) * 100).ceil
   end
+
+  def self.get_review_quiz_for_user(user)
+    incorrect_histories = UserQuizHistory.where(user: user, is_correct: false).order(:created_at)
+    incorrect_word_ids = incorrect_histories.pluck(:word_id).uniq
+    oldest_incorrect_word_id = incorrect_word_ids.first
+    Quiz.find_by(word_id: oldest_incorrect_word_id)
+  end
 end

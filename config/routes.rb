@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :quizzes, only: %i[show]
-  resources :review_quizzes, only: %i[index show] do
+  resources :review_quizzes, only: [:show] do
     get 'explanation', on: :member
+    collection do
+      get 'generate'
+    end
   end
   resources :words, only: %i[index] do
     resource :favorite, only: %i[create destroy]

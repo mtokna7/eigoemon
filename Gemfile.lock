@@ -85,6 +85,7 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     chronic (0.10.2)
+    coderay (1.1.3)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     cssbundling-rails (1.2.0)
@@ -154,6 +155,9 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.3)
+    pry (0.14.2)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
     public_suffix (5.0.3)
     puma (5.6.6)
       nio4r (~> 2.0)
@@ -276,6 +280,7 @@ DEPENDENCIES
   letter_opener
   meta-tags
   pg (~> 1.1)
+  pry
   puma (~> 5.0)
   rails (~> 7.0.6)
   rubocop

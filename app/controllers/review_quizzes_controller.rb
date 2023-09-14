@@ -1,9 +1,19 @@
 class ReviewQuizzesController < ApplicationController
+  def generate
+    @user = current_user
+    @quiz = Quiz.get_review_quiz_for_user(@user)
+    if @quiz
+      redirect_to review_quiz_path(@quiz)
+    else
+      # 適切なクイズが見つからない場合の処理（例: ルートページにリダイレクト）
+      redirect_to root_path
+    end
+  end
+  
   def show
     @user = current_user
-    low_rate_quizzes = Quiz.all.select { |quiz| quiz.correct_rate(@user) < 60.0 }
-    @quiz = low_rate_quizzes.sample
-    @quiz_choices = @quiz&.quiz_choices
+    @quiz = Quiz.find(params[:id])  # IDに基づいてクイズを取得
+    @quiz_choices = @quiz.quiz_choices  # その他、必要なデータを取得
   end
 
   def explanation
