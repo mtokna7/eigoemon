@@ -12,8 +12,9 @@ class ReviewQuizzesController < ApplicationController
   
   def show
     @user = current_user
-    @quiz = Quiz.find(params[:id])  # IDに基づいてクイズを取得
-    @quiz_choices = @quiz.quiz_choices  # その他、必要なデータを取得
+    @quiz = Quiz.find(params[:id])
+    @quiz_choices = @quiz.quiz_choices
+    handle_level_up
   end
 
   def explanation
