@@ -5,8 +5,7 @@ class ReviewQuizzesController < ApplicationController
     if @quiz
       redirect_to review_quiz_path(@quiz)
     else
-      # 適切なクイズが見つからない場合の処理（例: ルートページにリダイレクト）
-      redirect_to root_path
+      redirect_to no_quizzes_review_quizzes_path
     end
   end
   

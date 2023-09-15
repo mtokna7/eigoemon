@@ -11,9 +11,9 @@ class Quiz < ApplicationRecord
   end
 
   def self.get_review_quiz_for_user(user)
-    incorrect_histories = UserQuizHistory.where(user: user, is_correct: false).order(:created_at)
-    incorrect_word_ids = incorrect_histories.pluck(:word_id).uniq
-    oldest_incorrect_word_id = incorrect_word_ids.first
-    Quiz.find_by(word_id: oldest_incorrect_word_id)
+    low_rate_quizzes = Quiz.all.select { |quiz| quiz.correct_rate(user) < 60.0 }
+    sorted_by_count = low_rate_quizzes.sort_by { |quiz| UserQuizHistory.where(user: user, word_id: quiz.word_id).count }
+    review_quiz = sorted_by_count.first
+    review_quiz
   end
 end

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get 'explanation', on: :member
     collection do
       get 'generate'
+      get 'no_quizzes'
     end
   end
   resources :words, only: %i[index] do
