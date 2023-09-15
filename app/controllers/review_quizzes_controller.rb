@@ -1,9 +1,19 @@
 class ReviewQuizzesController < ApplicationController
+  def generate
+    @user = current_user
+    @quiz = Quiz.get_review_quiz_for_user(@user)
+    if @quiz
+      redirect_to review_quiz_path(@quiz)
+    else
+      redirect_to no_quizzes_review_quizzes_path
+    end
+  end
+
   def show
     @user = current_user
-    low_rate_quizzes = Quiz.all.select { |quiz| quiz.correct_rate(@user) < 60.0 }
-    @quiz = low_rate_quizzes.sample
-    @quiz_choices = @quiz&.quiz_choices
+    @quiz = Quiz.find(params[:id])
+    @quiz_choices = @quiz.quiz_choices
+    handle_level_up
   end
 
   def explanation

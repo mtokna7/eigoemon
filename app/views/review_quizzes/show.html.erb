@@ -1,8 +1,12 @@
+<%= javascript_include_tag 'level_up' %>
 <%= render 'shared/header' %>
 <% if @quiz.nil? %>
   <h1 class="font-bold mt-8 text-7xl text-center pb-5 font-yusei">復習もんだい！</h1>
-  <p class="mx-auto text-6xl text-center font-yusei break-words mb-80 mt-20 text-red-900">正解率60%未満のもんだいがあれば表示されるよ！</p>
+  <p class="mx-auto text-6xl text-center font-yusei break-words mb-80 mt-20 text-red-900">今は正解率が100%だからもんだいは表示されないよ！</p>
 <% else %>
-  <p class="mx-auto text-2xl text-center font-yusei break-words text-white bg-gray-500 mt-3">正解率60%未満のもんだい</p>
+  <p class="mx-auto text-2xl text-center font-yusei break-words text-white bg-gray-500 mt-3">復習もんだい</p>
   <%= render 'shared/question', explanation_path: 'explanation_review_quiz_path', quiz: @quiz, quiz_choices: @quiz_choices %>
+<% end %>
+<% if @level_up %>
+  <%= render 'quizzes/level_up_modal' %>
 <% end %>
