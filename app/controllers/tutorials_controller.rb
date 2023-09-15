@@ -4,6 +4,8 @@ class TutorialsController < ApplicationController
   before_action :next_quiz, only: %i[quiz_show]
   before_action :load_quiz, only: %i[quiz_show quiz_explanation]
 
+  TUTORIAL_WORD_IDS = [1, 4, 7].freeze
+
   def quiz_show
     @word_name = @quiz.word.name
     @quiz_choices = @quiz.quiz_choices
@@ -15,7 +17,7 @@ class TutorialsController < ApplicationController
     @word = Word.find(params[:id])
     correct_choice = @quiz.quiz_choices.find_by(is_correct: true)
     @is_correct = params[:choice_id].to_i == correct_choice.id if correct_choice
-    redirect_to root_path unless user_signed_in? || [1, 4, 7].include?(@word.id)
+    redirect_to root_path unless user_signed_in? || TUTORIAL_WORD_IDS.include?(@word.id)
   end
 
   def library_index
@@ -24,15 +26,14 @@ class TutorialsController < ApplicationController
 
   def library_explanation
     @word = Word.find(params[:word_id])
-    redirect_to library_index_tutorials_path unless user_signed_in? || [1, 4, 7].include?(@word.id)
+    redirect_to library_index_tutorials_path unless user_signed_in? || TUTORIAL_WORD_IDS.include?(@word.id)
   end
 
   private
 
   def set_quiz_sequence
-    @sequence = [1, 4, 7]
-    session[:quiz_index] = 0 if session[:quiz_index].nil? || session[:quiz_index] >= @sequence.size
-    @current_quiz_id = @sequence[session[:quiz_index]]
+    session[:quiz_index] = 0 if session[:quiz_index].nil? || session[:quiz_index] >= TUTORIAL_WORD_IDS.size
+    @current_quiz_id = TUTORIAL_WORD_IDS[session[:quiz_index]]
   end
 
   def load_quiz
@@ -41,7 +42,7 @@ class TutorialsController < ApplicationController
 
   def next_quiz
     session[:quiz_index] += 1
-    session[:quiz_index] = 0 if session[:quiz_index] >= @sequence.size
-    @current_quiz_id = @sequence[session[:quiz_index]]
+    session[:quiz_index] = 0 if session[:quiz_index] >= TUTORIAL_WORD_IDS.size
+    @current_quiz_id = TUTORIAL_WORD_IDS[session[:quiz_index]]
   end
 end
