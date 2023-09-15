@@ -13,7 +13,6 @@ class Quiz < ApplicationRecord
   def self.get_review_quiz_for_user(user)
     low_rate_quizzes = Quiz.all.select { |quiz| quiz.correct_rate(user) < 60.0 }
     sorted_by_count = low_rate_quizzes.sort_by { |quiz| UserQuizHistory.where(user: user, word_id: quiz.word_id).count }
-    review_quiz = sorted_by_count.first
-    review_quiz
+    sorted_by_count.first
   end
 end

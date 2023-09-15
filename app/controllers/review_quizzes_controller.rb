@@ -8,7 +8,7 @@ class ReviewQuizzesController < ApplicationController
       redirect_to no_quizzes_review_quizzes_path
     end
   end
-  
+
   def show
     @user = current_user
     @quiz = Quiz.find(params[:id])
