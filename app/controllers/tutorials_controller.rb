@@ -17,7 +17,7 @@ class TutorialsController < ApplicationController
     @word = Word.find(params[:id])
     correct_choice = @quiz.quiz_choices.find_by(is_correct: true)
     @is_correct = params[:choice_id].to_i == correct_choice.id if correct_choice
-    redirect_to root_path unless user_signed_in? || TUTORIAL_WORD_IDS.include?(@word.id)
+    redirect_to root_path unless can_access_tutorial?
   end
 
   def library_index
@@ -26,13 +26,17 @@ class TutorialsController < ApplicationController
 
   def library_explanation
     @word = Word.find(params[:word_id])
-    redirect_to library_index_tutorials_path unless user_signed_in? || TUTORIAL_WORD_IDS.include?(@word.id)
+    redirect_to library_index_tutorials_path unless can_access_tutorial?
   end
 
   private
 
+  def quiz_index_out_of_range?
+    session[:quiz_index].nil? || session[:quiz_index] >= TUTORIAL_WORD_IDS.size
+  end
+
   def set_quiz_sequence
-    session[:quiz_index] = 0 if session[:quiz_index].nil? || session[:quiz_index] >= TUTORIAL_WORD_IDS.size
+    session[:quiz_index] = 0 if quiz_index_out_of_range?
     @current_quiz_id = TUTORIAL_WORD_IDS[session[:quiz_index]]
   end
 
@@ -42,7 +46,11 @@ class TutorialsController < ApplicationController
 
   def next_quiz
     session[:quiz_index] += 1
-    session[:quiz_index] = 0 if session[:quiz_index] >= TUTORIAL_WORD_IDS.size
+    session[:quiz_index] = 0 if quiz_index_out_of_range?
     @current_quiz_id = TUTORIAL_WORD_IDS[session[:quiz_index]]
+  end
+
+  def can_access_tutorial?
+    user_signed_in? || TUTORIAL_WORD_IDS.include?(@word.id)
   end
 end
