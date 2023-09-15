@@ -10,9 +10,7 @@ class QuizzesController < ApplicationController
 
   def handle_level_up
     if level_up_conditions_met?
-      @level_up = true
-      @conversations = Conversation.where(level: current_user.level).order(:order)
-      reset_flags
+      execute_level_up
     else
       @level_up = false
     end
@@ -20,6 +18,12 @@ class QuizzesController < ApplicationController
 
   def level_up_conditions_met?
     current_user.leveled_up || (current_user.level.zero? && current_user.first_visit)
+  end
+
+  def execute_level_up
+    @level_up = true
+    @conversations = Conversation.where(level: current_user.level).order(:order)
+    reset_flags
   end
 
   def reset_flags

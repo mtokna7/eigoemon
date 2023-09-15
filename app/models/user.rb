@@ -37,10 +37,6 @@ class User < ApplicationRecord
         increase_level
       end
     when 1
-      if correct_count == 7 # 本リリース時に修正 メソッド全体修正後にrubocopの除外を外す
-        increase_level
-      end
-    when 2
       if correct_count == 10_000_000 # 本リリース時に修正 メソッド全体修正後にrubocopの除外を外す
         increase_level
       end
