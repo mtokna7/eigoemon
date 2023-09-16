@@ -9,5 +9,5 @@
 </div>
 <div class="text-left ml-160 mt-5 mb-3">
   <%= render 'favorites/favorite_button', word: @favorite.word, favorited: @favorite.word.favorited_by?(current_user) %>
-  <%= link_to 'もどる', favorites_path, class: 'btn bg-orange-600 hover:bg-orange-500 text-white font-yusei' %>
+  <%= link_to t('defaults.back'), favorites_path, class: 'btn bg-orange-600 hover:bg-orange-500 text-white font-yusei' %>
 </div>

@@ -2,8 +2,7 @@
 <div class="hero min-h-screen bg-base-200">
   <div class="hero-content flex-col lg:flex-row-reverse">
     <div class="text-center lg:text-left">
-      <h1 class="text-5xl font-bold"> <%= resource_name.to_s.humanize %></h1>
-      <p class="py-6">Edit your details below and click "Update" to save changes.</p>
+      <h1 class="text-5xl font-yusei"> <%= t('defaults.edit_user_information') %></h1>
     </div>
     <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
       <div class="card-body">
@@ -26,29 +25,29 @@
           <% end %>
           <div class="form-control">
             <label class="label">
-              <span class="label-text"><%= f.label :password %></span>
-              <p class="text-xs text-gray-600 mt-2">この欄はパスワードを変更したいときだけ入力してね！</p>
+              <span class="label-text"><%= f.label :new_password %></span>
             </label>
+              <p class="text-xs text-gray-600 mt-2"><%= t('defaults.new_password_if_you_want') %></p>            
+              <em class="text-xs text-gray-600">(<%= t('defaults.characters_minimum', min: @minimum_password_length) %>)</em>
             <%= f.password_field :password, autocomplete: "new-password", class: "input input-bordered" %>
             <% if @minimum_password_length %>
-              <em>(<%= @minimum_password_length %> characters minimum)</em>
             <% end %>
           </div>
           <div class="form-control">
             <label class="label">
-              <span class="label-text"><%= f.label :password_confirmation %></span>
+              <span class="label-text"><%= f.label :confirm_new_password %></span>
             </label>
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input input-bordered" %>
           </div>
           <div class="form-control">
             <label class="label">
               <span class="label-text"><%= f.label :current_password %></span>
-                             <p class="text-xs text-gray-600 mt-2 ml-3">※必須</p>
+              <p class="text-xs font-bold mt-2 ml-3">※ <%= t('defaults.required') %></p>
             </label>
             <%= f.password_field :current_password, autocomplete: "current-password", class: "input input-bordered" %>
           </div>
           <div class="form-control mt-6">
-            <%= f.submit "Update", class: "btn btn-primary" %>
+            <%= f.submit t('defaults.update'), class: "btn btn-primary" %>
           </div>
         <% end %>
     </div>

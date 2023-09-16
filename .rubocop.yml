@@ -40,8 +40,3 @@ Style/RedundantSelf:
 
 Style/HashSyntax:
   Enabled: false
-
-
-#差し当たり
-Rails/I18nLocaleTexts:
-  Enabled: false
