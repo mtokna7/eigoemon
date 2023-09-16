@@ -1,7 +1,7 @@
 <%= render 'shared/header' %>
 <p class="mx-auto text-3xl text-center font-yusei break-words mt-5">おためしでは <span class="text-rose-900">sequence</span>・<span class="text-rose-900">through</span>・<span class="text-rose-900">width</span> の3単語の詳細を見ることができるよ！</p>
-<p class="mx-auto text-3xl text-center font-yusei break-words mt-2">いちらんから探してクリックしてみよう！</p>
-<p class="mx-auto text-3xl text-center font-yusei break-words text-rose-900 mt-8">※ 次のページでは音が出るから気をつけてね</p>
+<p class="mx-auto text-3xl text-center font-yusei break-words mt-2"><%= t('tutorials.announcement') %></p>
+<p class="mx-auto text-3xl text-center font-yusei break-words text-rose-900 mt-8">※ <%= t('main.sound_notice') %></p>
 
 <div class="mockup-code mt-3 mx-28 bg-gray-600 text-white p-3 pb-52 mb-20">
   <% @words.each do |word| %>

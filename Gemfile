@@ -56,7 +56,8 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
-  gem 'pry'
+  gem 'pry-rails'
+  gem 'pry-byebug'
 end
 
 group :development do
@@ -78,5 +79,7 @@ group :test do
 end
 
 gem 'devise'
+gem "devise-i18n"
+gem 'rails-i18n'
 gem "meta-tags"
 gem 'whenever'
