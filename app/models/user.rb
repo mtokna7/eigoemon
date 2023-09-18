@@ -7,6 +7,8 @@ class User < ApplicationRecord
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   before_create :set_last_sign_in_at
 
+  LEVEL_UP_THRESHOLDS = { 0 => 3, 1 => 10_000_000 }.freeze
+
   def after_database_authentication
     super
     update(last_sign_in_at: Time.current)
@@ -26,24 +28,13 @@ class User < ApplicationRecord
 
   private
 
-  # rubocop:disable Style/IfUnlessModifier
-  # rubocop:disable Metrics/MethodLength
   def check_level_up
     correct_count = user_quiz_histories.where(is_correct: true).count
+    next_threshold = LEVEL_UP_THRESHOLDS[level]
+    return unless next_threshold
 
-    case level
-    when 0
-      if correct_count == 3
-        increase_level
-      end
-    when 1
-      if correct_count == 10_000_000 # 本リリース時に修正 メソッド全体修正後にrubocopの除外を外す
-        increase_level
-      end
-    end
+    increase_level if correct_count >= next_threshold
   end
-  # rubocop:enable Style/IfUnlessModifier
-  # rubocop:enable Metrics/MethodLength
 
   # rubocop:disable Rails/SkipsModelValidations
   def increase_level
