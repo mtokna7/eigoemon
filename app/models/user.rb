@@ -7,7 +7,9 @@ class User < ApplicationRecord
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   before_create :set_last_sign_in_at
 
-  LEVEL_UP_THRESHOLDS = { 0 => 3, 1 => 10_000_000 }.freeze
+  LEVEL_UP_THRESHOLDS = 4
+  MAX_DAILY_LEVEL_UP = 2
+  MAX_LEVEL = 8
 
   def after_database_authentication
     super
@@ -29,19 +31,27 @@ class User < ApplicationRecord
   private
 
   def check_level_up
-    correct_count = user_quiz_histories.where(is_correct: true).count
-    next_threshold = LEVEL_UP_THRESHOLDS[level]
-    return unless next_threshold
+    if last_leveled_up_at && last_leveled_up_at.to_date != Date.current
+      update!(daily_level_up_count: 0, last_leveled_up_at: nil)
+    end
+  
+    correct_count_today = user_quiz_histories.where(is_correct: true, created_at: Date.current.all_day).count
 
-    increase_level if correct_count >= next_threshold
+    if correct_count_today > 0
+      remainder_today = correct_count_today % LEVEL_UP_THRESHOLDS
+
+      if remainder_today == 0 && daily_level_up_count < MAX_DAILY_LEVEL_UP
+        increase_level
+      end
+    end
   end
 
-  # rubocop:disable Rails/SkipsModelValidations
   def increase_level
-    increment!(:level)
-    update!(leveled_up: true)
+    return if level >= MAX_LEVEL 
+      increment!(:level)
+      increment!(:daily_level_up_count)
+      update!(last_leveled_up_at: Time.current, leveled_up: true)
   end
-  # rubocop:enable Rails/SkipsModelValidations
 
   def set_last_sign_in_at
     self.last_sign_in_at = Time.current

@@ -49,13 +49,11 @@ ja:
     noted_words_index: "メモした単語いちらん"
     sound_notice: "次のページでは音が出るから気をつけてね"
     not_noted: "まだメモがないよ"
-    congratulations: "おめでとう！ユーザーレベルがあがったよ！"
     how_to_say: "よみかた"
     english_explanation: "えいごてき解説"
     programming_explanation: "プログラミングてき解説"
     answer: "こたえ"
     library_announcement: "気になる単語をクリック！"
-    prologue: "プロローグ"
   question:
     title:  "もんだい！"
     which_is_correct?: "どっちのふりがながそれっぽい発音になると思う？"
@@ -69,6 +67,13 @@ ja:
     next: "次の動画"
     previous: "前の動画"
     repeat: "くり返す"
+  modal:
+    prologue: "プロローグ"
+    congratulations: "おめでとう！ユーザーレベルがあがったよ！"
+    notice: "（※1日で上げられるユーザーレベルは最大で2つまでだよ）"
+    epilogue: "エピローグ"
+
+
 
 
 
