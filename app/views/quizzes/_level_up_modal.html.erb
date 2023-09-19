@@ -1,14 +1,20 @@
 <dialog id="level-up-modal" class="modal">
   <form method="dialog" class="modal-box w-11/12 max-w-5xl mx-auto">
     <% if @user.level == 0 %>
-      <h3 class="text-2xl font-dotgothic font-bold text-center text-violet-900 mb-1">〜<%= t('main.prologue') %>〜</h3>
+      <h3 class="text-2xl font-dotgothic font-bold text-center text-violet-900 mb-1">〜<%= t('modal.prologue') %>〜</h3>
       <div class="flex space-x-4">
         <%= image_tag("keshiki0.png", alt: "Prologue Image") %>
       </div>
-    <% else %>
-      <h3 class="text-2xl font-dotgothic font-bold text-center text-violet-900 mb-1"><%= t('main.congratulations') %></h3>
+    <% elsif @user.level >= 1 && @user.level <= 7 %>
+      <h3 class="text-2xl font-dotgothic font-bold text-center text-violet-900 mb-1"><%= t('modal.congratulations') %></h3>
+      <p class="text-xl font-dotgothic font-bold text-center text-violet-900 mb-1"><%= t('modal.notice') %></p>
       <div class="flex space-x-4">
         <%= image_tag("keshiki.png", alt: "Conversation Image") %>
+      </div>
+    <% else %>
+      <h3 class="text-2xl font-dotgothic font-bold text-center text-violet-900 mb-1">〜<%= t('modal.epilogue') %>〜</h3>
+      <div class="flex space-x-4">
+        <%= image_tag("epi.png", alt: "Epilogue Condition Image") %>
       </div>
     <% end %>
     <div class="flex md:flex-row flex-col mt-2">
@@ -17,3 +23,5 @@
     </div>
   </form>
 </dialog>
+
+

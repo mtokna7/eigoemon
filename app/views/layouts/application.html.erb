@@ -1,44 +1,52 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YWQ2PWNKYJ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YWQ2PWNKYJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-YWQ2PWNKYJ');
+  </script>
 
-      gtag('config', 'G-YWQ2PWNKYJ');
-    </script>
-    <title>Eigoemon</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+  <title>Eigoemon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=RocknRoll+One&family=Rowdies:wght@300&family=Yusei+Magic&display=swap" rel="stylesheet">
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-    <%= display_meta_tags(default_meta_tags) %>
-    <meta name="google-site-verification" content="0PHSccm3wMmn0viU8zme3x8rn_gld42HuE1ZYCvmbcI" />
-  </head>
-  <body>
-    <% header_class = controller_name == "homes" && action_name == "top" ? "fixed top-0 w-full z-10" : "" %>
-    <header class="<%= header_class %>">
-      <%= render 'shared/header' %>
-    </header>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=RocknRoll+One&family=Rowdies:wght@300&family=Yusei+Magic&display=swap" rel="stylesheet">
 
-    <% flash.each do |key, value| %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
+  <%= display_meta_tags(default_meta_tags) %>
+
+  <meta name="google-site-verification" content="0PHSccm3wMmn0viU8zme3x8rn_gld42HuE1ZYCvmbcI" />
+</head>
+<body>
+  <% header_class = controller_name == "homes" && action_name == "top" ? "fixed top-0 w-full z-10" : "" %>
+  <header class="<%= header_class %>">
+    <%= render 'shared/header' %>
+  </header>
+
+  <% flash.each do |key, value| %>
     <div class="<%= 'mt-20' if controller_name == 'homes' && action_name == 'top' %> alert">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
       </svg>
       <span><%= value %></span>
     </div>
-    <% end %>
+  <% end %>
 
-    <%= yield %>
-    <footer><%= render 'shared/footer' %></footer>
-  </body>
+  <%= yield %>
+
+  <footer>
+    <%= render 'shared/footer' %>
+  </footer>
+</body>
 </html>

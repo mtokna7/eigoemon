@@ -9,8 +9,7 @@ class TutorialsController < ApplicationController
   def quiz_show
     @word_name = @quiz.word.name
     @quiz_choices = @quiz.quiz_choices
-    redirect_to root_path, alert: t('defaults.not_have_access_rights') unless @quiz.id == @current_quiz_id
-    # alertの表示方法確認
+    redirect_to root_path unless @quiz.id == @current_quiz_id
   end
 
   def quiz_explanation
