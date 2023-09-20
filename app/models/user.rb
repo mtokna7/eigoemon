@@ -34,24 +34,27 @@ class User < ApplicationRecord
     if last_leveled_up_at && last_leveled_up_at.to_date != Date.current
       update!(daily_level_up_count: 0, last_leveled_up_at: nil)
     end
-  
+
     correct_count_today = user_quiz_histories.where(is_correct: true, created_at: Date.current.all_day).count
 
-    if correct_count_today > 0
-      remainder_today = correct_count_today % LEVEL_UP_THRESHOLDS
+    return unless correct_count_today.positive?
 
-      if remainder_today == 0 && daily_level_up_count < MAX_DAILY_LEVEL_UP
-        increase_level
-      end
-    end
+    remainder_today = correct_count_today % LEVEL_UP_THRESHOLDS
+
+    return unless remainder_today.zero? && daily_level_up_count < MAX_DAILY_LEVEL_UP
+
+    increase_level
   end
 
+  # rubocop:disable Rails/SkipsModelValidations
   def increase_level
-    return if level >= MAX_LEVEL 
-      increment!(:level)
-      increment!(:daily_level_up_count)
-      update!(last_leveled_up_at: Time.current, leveled_up: true)
+    return if level >= MAX_LEVEL
+
+    increment!(:level)
+    increment!(:daily_level_up_count)
+    update!(last_leveled_up_at: Time.current, leveled_up: true)
   end
+  # rubocop:enable Rails/SkipsModelValidations
 
   def set_last_sign_in_at
     self.last_sign_in_at = Time.current
