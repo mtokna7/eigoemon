@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   LEVEL_UP_THRESHOLDS = 4
   MAX_DAILY_LEVEL_UP = 2
-  MAX_LEVEL = 8
+  MAX_LEVEL = 10
 
   def after_database_authentication
     super
