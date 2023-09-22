@@ -10,12 +10,12 @@
           <%= link_to t('main.start_quiz'), quiz_path(Quiz.all.pluck(:id).sample) %>
         </div>
       </li>
-      <li>
+      <li class="hidden lg:block">
         <div class="header-loggedout btn bg-blue-600 hover:bg-blue-500 text-white hover:text-white font-yusei px-8 text-lg mr-5">
           <%= link_to t('main.library'), words_path %>
         </div>
       </li>
-      <li>
+      <li class="hidden lg:block">
         <details>
           <summary class="btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white mr-4 px-8 text-lg">
             <%= t('main.memories') %>
@@ -41,7 +41,7 @@
           </details>
       </li>
         <% else %>
-      <li>
+      <li class="hidden lg:block">
         <details>
           <summary class="btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white mr-4 px-8 text-lg">
             <%= t('tutorials.title') %>
