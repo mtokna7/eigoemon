@@ -30,6 +30,8 @@ class User < ApplicationRecord
 
   private
 
+  # rubocop:disable Style/GuardClause
+  # rubocop:disable Style/IfUnlessModifier
   def check_level_up
     if last_leveled_up_at && last_leveled_up_at.to_date != Date.current
       update!(daily_level_up_count: 0, last_leveled_up_at: nil)
@@ -37,14 +39,16 @@ class User < ApplicationRecord
 
     correct_count_today = user_quiz_histories.where(is_correct: true, created_at: Date.current.all_day).count
 
-    return unless correct_count_today.positive?
+    if correct_count_today.positive?
+      remainder_today = correct_count_today % LEVEL_UP_THRESHOLDS
 
-    remainder_today = correct_count_today % LEVEL_UP_THRESHOLDS
-
-    return unless remainder_today.zero? && daily_level_up_count < MAX_DAILY_LEVEL_UP
-
-    increase_level
+      if remainder_today.zero? && daily_level_up_count < MAX_DAILY_LEVEL_UP
+        increase_level
+      end
+    end
   end
+  # rubocop:enable Style/GuardClause
+  # rubocop:disable Style/IfUnlessModifier
 
   # rubocop:disable Rails/SkipsModelValidations
   def increase_level
