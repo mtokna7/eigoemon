@@ -1,6 +1,7 @@
 ja:
   defaults:
     eigoemon: "はつめい屋 英語えもん"
+    mobile_eigoemon: "え"
     login: "ログイン"
     here_to_login: "ログインはこちら"
     logout: "ログアウト"
