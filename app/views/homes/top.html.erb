@@ -2,8 +2,8 @@
   <div class="mt-5">
     <%= image_tag("edo2.png", alt: "Top Image") %>
   </div>
-  <div class="mt-5 p-5 lg:p-0">
-  <div class="relative flex flex-col items-center max-w-7xl mx-auto bg-orange-100 rounded-xl border-4 border-transparent hover:border-rose-200 mb-10 pb-52">
+  <div class="mt-5 lg:p-0">
+  <div class="relative flex flex-col items-center max-w-7xl mx-auto bg-orange-100 rounded-xl border-4 border-transparent hover:border-rose-200 mb-10 lg:pb-52 pb-10">
     <!-- 小さなカード -->
     <div class="mt-8 flex items-center justify-center bg-purple-900 py-4 lg:py-6 w-36 lg:w-44 rounded-2xl h-7">
       <h2 class="text-white lg:text-2xl font-rocknroll">せつめい</h2>
@@ -11,14 +11,14 @@
 
     <!-- 中央のテキスト部分 -->
     <% unless signed_in? %>
-      <div class="flex flex-col items-center justify-center px-4 mt-8">
-        <p class="lg:text-2xl font-yusei">まずは「おためし」ボタンをおして、このwebアプリが何をしようとしているのかを体感してこよう！</p>
-        <p class="mt-2 lg:text-2xl font-yusei">とはいえ事前情報がほしいひとのために、順に説明するよ。</p>
+      <div class="flex flex-col items-center justify-center lg:px-4 mt-8">
+        <p class="lg:text-2xl font-yusei lg:mx-0 mx-2">まずは「おためし」ボタンをおして、このwebアプリが何をしようとしているのかを体感してこよう！</p>
+        <p class="mt-2 lg:text-2xl font-yusei lg:mx-0 mx-2">とはいえ事前情報がほしいひとのために、順に説明するよ。</p>
       </div>
     <% end %>
 
       <!-- 下部の小さなカードと右寄せテキスト -->
-      <div class="mt-20 w-full flex flex-col lg:flex-row items-start">
+      <div class="lg:mt-20 mt-5 w-full flex flex-col lg:flex-row items-start">
         <!-- 小さなカード -->
         <div class="hidden lg:block">
         <div class="flex-shrink-0 mx-auto lg:mx-0 lg:ml-24 flex items-center justify-center bg-blue-700 rounded-2xl w-36 lg:w-48 h-7 py-4 lg:py-6 mt-3">
@@ -26,9 +26,9 @@
         </div>
         </div>
         <!-- 右寄せのテキスト部分 -->
-        <div class="mt-4 lg:mt-0 ml-0 lg:ml-10 flex flex-col items-start justify-center px-4 lg:px-0">
-          <p class="lg:text-2xl font-yusei">このwebアプリでは<span class="text-rose-800">プログラミング中によく見かける英単語</span> を <span class="text-rose-800">ネイティブっぽく発音する方法</span> が ゆるーく学べるよ。</p>
-          <p class="lg:text-2xl font-yusei">なぜ ゆるーく なのかというと、ここでおこなっていることは、<span class="text-rose-800">はつおん記号を使わずに 英単語にひらがなでふりがなをふる </span>という試みだからだよ。</p>
+        <div class="lg:mt-0 ml-0 lg:ml-10 flex flex-col items-start justify-center lg:px-0">
+          <p class="lg:text-2xl font-yusei lg:mx-0 mx-2">このwebアプリでは<span class="text-rose-800">プログラミング中によく見かける英単語</span> を <span class="text-rose-800">ネイティブっぽく発音する方法</span> が ゆるーく学べるよ。</p>
+          <p class="lg:text-2xl font-yusei lg:mx-0 mx-2">なぜ ゆるーく なのかというと、ここでおこなっていることは、<span class="text-rose-800">はつおん記号を使わずに 英単語にひらがなでふりがなをふる </span>という試みだからだよ。</p>
         </div>
       </div>
 
@@ -39,9 +39,9 @@
           <h2 class="text-white text-xl lg:text-2xl font-rocknroll text-center">もんだい</h2>
         </div>
         <!-- 右寄せのテキスト部分 -->
-        <div class="mt-4 lg:mt-0 ml-0 lg:ml-10 flex flex-col items-start justify-center px-4 lg:px-0">
-          <p class="lg:text-2xl font-yusei mr-24 py-1">ある英単語に対して、よりネイティブっぽく読めるふりがなはどちらかを当てる2択のクイズが始まるよ。</p>
-          <p class="lg:text-2xl font-yusei mr-24 py-1">解説画面にすすむと、<span class="text-rose-800">会話の中でのその単語の音声 </span>と、その単語が<span class="text-rose-800"> プログラミングではどのように使われているかの解説 </span>を見ることができるよ。</p>
+        <div class="lg:mt-0 mt-5 lg:ml-10 lg:px-0">
+          <p class="lg:text-2xl font-yusei lg:mr-24 lg:py-1 lg:mx-0 mx-2">ある英単語に対して、よりネイティブっぽく読めるふりがなはどちらかを当てる2択のクイズが始まるよ。</p>
+          <p class="lg:text-2xl font-yusei lg:mr-24 lg:py-1 lg:mx-0 mx-2">解説画面にすすむと、<span class="text-rose-800">会話の中でのその単語の音声 </span>と、その単語が<span class="text-rose-800"> プログラミングではどのように使われているかの解説 </span>を見ることができるよ。</p>
         </div>
       </div>
 
@@ -58,7 +58,7 @@
       </div>
     </div>
 
-      <p class="lg:text-5xl font-yusei mr-9 mt-10 mb-10 text-center text-purple-900">説明は以上だよ！さっそく遊ぼう！</p>
+      <p class="lg:text-5xl font-yusei mr-9 mt-10 lg:mb-12 text-center text-purple-900">説明は以上だよ！さっそく遊ぼう！</p>
 
       <div class="mt-8 flex items-center justify-center bg-blue-700 py-4 lg:py-6 w-36 lg:w-44 rounded-2xl h-7">
         <h2 class="text-white text-xl lg:text-2xl font-rocknroll">ほそく</h2>
