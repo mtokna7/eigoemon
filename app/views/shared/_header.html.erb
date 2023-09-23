@@ -8,14 +8,14 @@
       <ul class="menu menu-horizontal px-3 text-xl font-yusei text-base-200">
         <li>
           <% if user_signed_in? %>
-            <div class="header-loggedout btn bg-blue-600 hover:bg-blue-500 text-white hover:text-white font-yusei px-8 text-lg mr-5">
-            <%= link_to t('main.start_quiz'), quiz_path(Quiz.all.pluck(:id).sample) %>
-          </div>
+            <%= link_to quiz_path(Quiz.all.pluck(:id).sample), class: "header-loggedout btn bg-blue-600 hover:bg-blue-500 text-white hover:text-white font-yusei px-8 text-lg mr-5 block text-center" do %>
+              <%= t('main.start_quiz') %>
+            <% end %>
         </li>
         <li>
-          <div class="header-loggedout btn bg-blue-600 hover:bg-blue-500 text-white hover:text-white font-yusei px-8 text-lg mr-5">
-            <%= link_to t('main.library'), words_path %>
-          </div>
+          <%= link_to words_path, class: "header-loggedout btn bg-blue-600 hover:bg-blue-500 text-white hover:text-white font-yusei px-8 text-lg mr-5 block text-center" do %>
+            <%= t('main.library') %>
+          <% end %>
         </li>
         <li>
           <details>
@@ -54,13 +54,12 @@
             </ul>
           </details>
         </li>
-          <div class="header-loggedout btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei px-8 text-lg mr-3">
-            <%= link_to t('defaults.kanji_sign_up'), new_user_registration_path %>
-          </div>
         <li>
-          <div class="header-loggedout btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei px-8 text-lg mr-5">
-            <%= link_to t('defaults.login'), new_user_session_path %>
-          </div>
+          <%= link_to t('defaults.kanji_sign_up'), new_user_registration_path, class: "header-loggedout btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei px-8 text-lg mr-3 block" %>
+        </li>
+        <li>
+          <%= link_to t('defaults.login'), new_user_session_path, class: "header-loggedout btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei px-8 text-lg mr-5 block" %>
+        </li>
           <% end %>
         </li>
       </ul>
@@ -78,13 +77,13 @@
       <ul class="menu menu-horizontal font-yusei text-base-200">
         <li>
           <% if user_signed_in? %>
-            <div class="header-loggedout btn bg-blue-600 hover:bg-blue-500 text-white hover:text-white font-yusei">
-            <%= link_to t('main.start_quiz'), quiz_path(Quiz.all.pluck(:id).sample) %>
-          </div>
+            <%= link_to quiz_path(Quiz.all.pluck(:id).sample), class: "btn bg-blue-600 hover:bg-blue-500 text-white hover:text-white font-yusei block text-center h-10 py-4" do %>
+              <%= t('main.start_quiz') %>
+            <% end %>
         </li>
         <li>
           <details>
-            <summary class="btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei"><%= current_user.name %></summary>
+            <summary class="btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei h-10 py-4"><%= current_user.name %></summary>
             <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-300 rounded-box">
               <li class="text-rose-900"><%= t('main.user_level') %>：<%= current_user.level %></li>
               <li class="text-black"><%= link_to t('defaults.edit_user_information'), edit_user_registration_path %></li>
@@ -97,10 +96,8 @@
           </details>
         </li>
           <% else %>
-        <li class="btn bg-rose-900 hover:bg-rose-800 text-white font-yusei"><%= link_to t('tutorials.title'), quiz_show_tutorial_path(1) %></li>
-        <div class="header-loggedout btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei">
-          <%= link_to t('defaults.login'), new_user_session_path %>
-        </div>
+        <li><%= link_to t('tutorials.title'), quiz_show_tutorial_path(1), class: "btn bg-rose-900 hover:bg-rose-800 text-white font-yusei block h-10 py-4" %></li>
+        <%= link_to t('defaults.login'), new_user_session_path, class: "header-loggedout btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei block h-10 py-4" %>
         <% end %>
         </li>
       </ul>
