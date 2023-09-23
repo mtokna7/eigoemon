@@ -1,13 +1,13 @@
-<h1 class="font-bold mt-5 lg:text-6xl text-2xl text-center pb-5 font-yusei"><%= t('question.title') %></h1>
+<h1 class="font-bold mt-5 lg:text-6xl text-3xl text-center pb-5 font-yusei"><%= t('question.title') %></h1>
 <p class="lg:mx-auto lg:text-4xl text-xl text-center font-rocknroll"><%= t('question.which_is_correct?') %></p>
-<p class="lg:mx-auto lg:text-2xl text-xl text-center font-yusei text-rose-900 mt-3">※ <%= t('main.sound_notice') %></p>
+<p class="lg:mx-auto lg:text-2xl text-lg text-center font-yusei text-rose-900 mt-3">※ <%= t('main.sound_notice') %></p>
 <p class="font-rowdies lg:mx-auto lg:text-8xl text-5xl text-center mt-8 py-10 break-words"><%= quiz.word.name %></p>
 
 <div class="flex flex-col justify-center pb-20 items-center">
   <div class="flex flex-col md:flex-row justify-center items-center">
     <% quiz_choices.shuffle.each_with_index do |choice, index| %>
       <% bg_color = index == 0 ? 'bg-blue-500 hover:bg-blue-400' : 'bg-green-600 hover:bg-green-400' %>
-      <% link_classes = "lg:w-124 w-72 lg:h-48 h-24 p-6 mx-6 my-2 #{bg_color} rounded lg:shadow-md lg:text-5xl text-4xl text-center font-yusei flex items-center justify-center lg:mt-10 text-gray-700" %>
+      <% link_classes = "lg:w-124 w-85 lg:h-48 h-24 p-6 mx-6 my-2 #{bg_color} rounded lg:shadow-md lg:text-5xl text-3xl text-center font-yusei flex items-center justify-center lg:mt-10 text-gray-700" %>
       <%= link_to send(explanation_path, id: quiz.word.id, choice_id: choice.id), method: :get do %>
         <%= content_tag :div, class: link_classes do %>
           <% parts = choice.parts %>
