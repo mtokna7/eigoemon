@@ -1,41 +1,90 @@
-<div class="navbar bg-yellow-600">
-  <!-- PC 用 -->
-  <div class="hidden lg:block flex-1">
+<!-- PC向け -->
+<div class="hidden lg:block">
+  <div class="navbar bg-yellow-600">
+    <div class="flex-1">
       <%= link_to t('defaults.eigoemon'), root_path, class: 'btn bg-rose-900 hover:bg-rose-800 text-white text-xl font-yusei ml-10' %>
-  </div>
-  <!-- タブレット/スマートフォン 用 -->
-  <div class="lg:hidden flex-1">
-    <%= link_to t('defaults.mobile_eigoemon'), root_path, class: 'btn bg-rose-900 hover:bg-rose-800 text-white font-yusei ml-10' %>
-  </div>
-
-  <div class="flex-none">
-    <ul class="menu menu-horizontal px-3 text-xl font-yusei text-base-200">
-      <li>
-        <% if user_signed_in? %>
-          <div class="header-loggedout btn bg-blue-600 hover:bg-blue-500 text-white hover:text-white font-yusei px-8 text-lg mr-5">
-          <%= link_to t('main.start_quiz'), quiz_path(Quiz.all.pluck(:id).sample) %>
-        </div>
-      </li>
-      <li class="hidden lg:block">
-        <div class="header-loggedout btn bg-blue-600 hover:bg-blue-500 text-white hover:text-white font-yusei px-8 text-lg mr-5">
-          <%= link_to t('main.library'), words_path %>
-        </div>
-      </li>
-      <li class="hidden lg:block">
-        <details>
-          <summary class="btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white mr-4 px-8 text-lg">
-            <%= t('main.memories') %>
-          </summary>
-          <ul class="p-2 bg-base-300 text-black text-lg">
-            <li><%= link_to t('main.noted_words'), favorites_path %></li>
-            <li><%= link_to t('main.review_quizzes'), generate_review_quizzes_path %></li>
-          </ul>
-        </details>
-      </li>
-      <li>
+    </div>
+    <div class="flex-none">
+      <ul class="menu menu-horizontal px-3 text-xl font-yusei text-base-200">
+        <li>
+          <% if user_signed_in? %>
+            <%= link_to quiz_path(Quiz.all.pluck(:id).sample), class: "header-loggedout btn bg-blue-600 hover:bg-blue-500 text-white hover:text-white font-yusei px-8 text-lg mr-5 block text-center" do %>
+              <%= t('main.start_quiz') %>
+            <% end %>
+        </li>
+        <li>
+          <%= link_to words_path, class: "header-loggedout btn bg-blue-600 hover:bg-blue-500 text-white hover:text-white font-yusei px-8 text-lg mr-5 block text-center" do %>
+            <%= t('main.library') %>
+          <% end %>
+        </li>
+        <li>
           <details>
-            <summary class="btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei px-8 text-lg mr-5"><%= current_user.name %></summary>
-            <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-300 rounded-box text-lg">
+            <summary class="btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white mr-4 px-8 text-lg">
+              <%= t('main.memories') %>
+            </summary>
+            <ul class="p-2 bg-base-300 text-black text-lg">
+              <li><%= link_to t('main.noted_words'), favorites_path %></li>
+              <li><%= link_to t('main.review_quizzes'), generate_review_quizzes_path %></li>
+            </ul>
+          </details>
+        </li>
+        <li>
+            <details>
+              <summary class="btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei px-8 text-lg mr-5"><%= current_user.name %></summary>
+              <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-300 rounded-box text-lg">
+                <li class="text-rose-900"><%= t('main.user_level') %>：<%= current_user.level %></li>
+                <li class="text-black"><%= link_to t('defaults.edit_user_information'), edit_user_registration_path %></li>
+                <li class="text-black">
+                  <%= link_to destroy_user_session_path, data: {turbo_method: :delete, status: :see_other, turbo_confirm: t('defaults.logged_out?')} do %>
+                    <%= t('defaults.logout') %>
+                  <% end %>
+                </li>
+              </ul>
+            </details>
+        </li>
+          <% else %>
+        <li>
+          <details>
+            <summary class="btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white mr-4 px-8 text-lg">
+              <%= t('tutorials.title') %>
+            </summary>
+            <ul class="p-2 bg-base-300 text-black text-lg">
+              <li><%= link_to t('tutorials.quiz'), quiz_show_tutorial_path(1) %></li>
+              <li><%= link_to t('tutorials.library'), library_index_tutorials_path %></li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <%= link_to t('defaults.kanji_sign_up'), new_user_registration_path, class: "header-loggedout btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei px-8 text-lg mr-3 block" %>
+        </li>
+        <li>
+          <%= link_to t('defaults.login'), new_user_session_path, class: "header-loggedout btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei px-8 text-lg mr-5 block" %>
+        </li>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- タブレット/スマートフォン向け -->
+<div class="lg:hidden">
+  <div class="navbar bg-yellow-600">
+    <div class="flex-1">
+      <%= link_to t('defaults.emon'), root_path, class: 'btn bg-rose-900 hover:bg-rose-800 text-white font-yusei'%>
+    </div>
+    <div class="flex-none">
+      <ul class="menu menu-horizontal font-yusei text-base-200">
+        <li>
+          <% if user_signed_in? %>
+            <%= link_to quiz_path(Quiz.all.pluck(:id).sample), class: "btn bg-blue-600 hover:bg-blue-500 text-white hover:text-white font-yusei block text-center h-10 py-4" do %>
+              <%= t('main.start_quiz') %>
+            <% end %>
+        </li>
+        <li>
+          <details>
+            <summary class="btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei h-10 py-4"><%= current_user.name %></summary>
+            <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-300 rounded-box">
               <li class="text-rose-900"><%= t('main.user_level') %>：<%= current_user.level %></li>
               <li class="text-black"><%= link_to t('defaults.edit_user_information'), edit_user_registration_path %></li>
               <li class="text-black">
@@ -45,28 +94,13 @@
               </li>
             </ul>
           </details>
-      </li>
-        <% else %>
-      <li class="hidden lg:block">
-        <details>
-          <summary class="btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white mr-4 px-8 text-lg">
-            <%= t('tutorials.title') %>
-          </summary>
-          <ul class="p-2 bg-base-300 text-black text-lg">
-            <li><%= link_to t('tutorials.quiz'), quiz_show_tutorial_path(1) %></li>
-            <li><%= link_to t('tutorials.library'), library_index_tutorials_path %></li>
-          </ul>
-        </details>
-      </li>
-        <div class="header-loggedout btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei px-8 text-lg mr-3">
-          <%= link_to t('defaults.kanji_sign_up'), new_user_registration_path %>
-        </div>
-      <li>
-        <div class="header-loggedout btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei px-8 text-lg mr-5">
-          <%= link_to t('defaults.login'), new_user_session_path %>
-        </div>
+        </li>
+          <% else %>
+        <li><%= link_to t('tutorials.title'), quiz_show_tutorial_path(1), class: "btn bg-rose-900 hover:bg-rose-800 text-white font-yusei block h-10 py-4" %></li>
+        <%= link_to t('defaults.login'), new_user_session_path, class: "header-loggedout btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei block h-10 py-4" %>
         <% end %>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

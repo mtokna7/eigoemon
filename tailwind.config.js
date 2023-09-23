@@ -22,6 +22,8 @@ module.exports = {
         'yusei': ['Yusei Magic', 'sans-serif']
       },
       width: {
+        '85': '21.25rem',
+        '90': '22.5rem', 
         '124': '31rem', 
       },
       margin: {
