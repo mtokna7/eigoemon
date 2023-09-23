@@ -97,21 +97,11 @@
           </details>
         </li>
           <% else %>
-        <li>
-          <details>
-            <summary class="btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white">
-              <%= t('tutorials.title') %>
-            </summary>
-            <ul class="p-2 bg-base-300 text-black">
-              <li><%= link_to t('tutorials.quiz'), quiz_show_tutorial_path(1) %></li>
-              <li><%= link_to t('tutorials.library'), library_index_tutorials_path %></li>
-            </ul>
-          </details>
-        </li>        <li>
-          <div class="header-loggedout btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei">
-            <%= link_to t('defaults.login'), new_user_session_path %>
-          </div>
-          <% end %>
+        <li class="btn bg-rose-900 hover:bg-rose-800 text-white font-yusei"><%= link_to t('tutorials.title'), quiz_show_tutorial_path(1) %></li>
+        <div class="header-loggedout btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei">
+          <%= link_to t('defaults.login'), new_user_session_path %>
+        </div>
+        <% end %>
         </li>
       </ul>
     </div>
