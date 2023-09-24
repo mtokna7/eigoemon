@@ -1,5 +1,5 @@
 class TutorialsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[quiz_show quiz_explanation library_index library_explanation]
+  skip_before_action :authenticate_user!, only: %i[quiz_show quiz_explanation library_index library_explanation autocomplete]
   before_action :set_quiz_sequence, only: %i[quiz_show quiz_explanation]
   before_action :next_quiz, only: %i[quiz_show]
   before_action :load_quiz, only: %i[quiz_show quiz_explanation]
@@ -21,6 +21,12 @@ class TutorialsController < ApplicationController
 
   def library_index
     @words = Word.order(:name).all
+  end
+
+  def autocomplete
+    query = params[:q]
+    words = Word.where('name ILIKE ?', "%#{query}%").limit(10)
+    render partial: 'tutorial_autocomplete_results', locals: { words: words }
   end
 
   def library_explanation
