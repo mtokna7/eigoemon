@@ -77,13 +77,13 @@
       <ul class="menu menu-horizontal font-yusei text-base-200">
         <li>
           <% if user_signed_in? %>
-            <%= link_to quiz_path(Quiz.all.pluck(:id).sample), class: "btn bg-blue-600 hover:bg-blue-500 text-white hover:text-white font-yusei block text-center h-10 py-4" do %>
+            <%= link_to quiz_path(Quiz.all.pluck(:id).sample), class: "btn bg-blue-600 hover:bg-blue-500 text-white hover:text-white font-yusei block text-center h-10 py-4 mr-1" do %>
               <%= t('main.start_quiz') %>
             <% end %>
         </li>
         <li>
           <details>
-            <summary class="btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei h-10 py-4"><%= current_user.name %></summary>
+            <summary class="btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei h-10 py-4 ml-1"><%= current_user.name %></summary>
             <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-300 rounded-box">
               <li class="text-rose-900"><%= t('main.user_level') %>：<%= current_user.level %></li>
               <li class="text-black"><%= link_to t('defaults.edit_user_information'), edit_user_registration_path %></li>
@@ -96,8 +96,8 @@
           </details>
         </li>
           <% else %>
-        <li><%= link_to t('tutorials.title'), quiz_show_tutorial_path(1), class: "btn bg-rose-900 hover:bg-rose-800 text-white font-yusei block h-10 py-4" %></li>
-        <%= link_to t('defaults.login'), new_user_session_path, class: "header-loggedout btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei block h-10 py-4" %>
+        <li class="mr-1"><%= link_to t('tutorials.title'), quiz_show_tutorial_path(1), class: "btn bg-rose-900 hover:bg-rose-800 text-white font-yusei block h-10 py-4" %></li>
+        <li class="ml-1"><%= link_to t('defaults.login'), new_user_session_path, class: "header-loggedout btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei block h-10 py-4" %></li>
         <% end %>
         </li>
       </ul>
