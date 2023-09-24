@@ -1,9 +1,9 @@
 <div class="flex justify-center items-center mt-5">
   <p class="text-4xl font-rocknroll break-words mr-5"><%= t('main.library_announcement') %></p>
-  <div data-controller="autocomplete" data-autocomplete-url-value="<%= autocomplete_words_path %>" role="combobox" class="text-lg">
+  <div data-controller="autocomplete" data-autocomplete-url-value="<%= autocomplete_words_path %>" role="combobox" class="text-lg relative">
     <input type="text" data-autocomplete-target="input" class="border rounded" autofocus placeholder="<%= t('placeholder.search') %>">
     <input type="hidden" name="word_id" data-autocomplete-target="hidden"/>
-    <ul class="list-group" data-autocomplete-target="results"></ul>
+    <ul class="list-group absolute z-10 mt-2 bg-white border rounded shadow-lg" data-autocomplete-target="results"></ul>
   </div>
 </div>
 
