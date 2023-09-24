@@ -1,0 +1,5 @@
+<% words.each do |word| %>
+  <li class="list-group-item" role="option" data-autocomplete-value="<%= word.id %>" data-autocomplete-label="<%= word.name %>">
+    <%= link_to word.name, english_explanation_path(word.id) %>
+  </li>
+<% end %>

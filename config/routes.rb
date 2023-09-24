@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'words/autocomplete', to: 'words#autocomplete', as: 'autocomplete_words'
   get 'pages/privacy'
   get 'pages/terms'
   root "homes#top"

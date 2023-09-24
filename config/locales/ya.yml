@@ -1,4 +1,6 @@
 ja:
+  placeholder:
+    search: "ここで検索もできるよ"
   defaults:
     eigoemon: "はつめい屋 英語えもん"
     emon: "えもん"
