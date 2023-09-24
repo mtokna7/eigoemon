@@ -1,10 +1,10 @@
-<p class="mx-auto text-3xl text-center font-yusei break-words mt-5">おためしでは <span class="text-rose-900">sequence</span>・<span class="text-rose-900">through</span>・<span class="text-rose-900">width</span> の3単語の詳細を見ることができるよ！</p>
+<p class="mx-auto text-3xl text-center font-yusei mt-5">おためしでは <span class="text-blue-600 font-rowdies text-5xl">sequence</span>・<span class="text-blue-600 font-rowdies text-5xl">through</span>・<span class="text-blue-600 font-rowdies text-5xl">width</span> の3単語の詳細を見ることができるよ！</p>
 <div class="flex justify-center items-center mt-5">
-  <p class="text-4xl font-rocknroll break-words mr-5"><%= t('main.library_announcement') %></p>
-  <div data-controller="autocomplete" data-autocomplete-url-value="<%= tutorial_autocomplete_words_path %>" role="combobox" class="text-lg">
+  <p class="text-4xl font-rocknroll mr-5"><%= t('main.library_announcement') %></p>
+  <div data-controller="autocomplete" data-autocomplete-url-value="<%= tutorial_autocomplete_words_path %>" role="combobox" class="text-lg relative">
     <input type="text" data-autocomplete-target="input" class="border rounded" autofocus placeholder="<%= t('placeholder.search') %>">
     <input type="hidden" name="word_id" data-autocomplete-target="hidden"/>
-    <ul class="list-group" data-autocomplete-target="results"></ul>
+    <ul class="list-group absolute z-10 mt-2 bg-white border rounded shadow-lg" data-autocomplete-target="results"></ul>
   </div>
 </div>
 <p class="mx-auto text-3xl text-center font-yusei break-words text-rose-900 mt-8">※ <%= t('main.sound_notice') %></p>
