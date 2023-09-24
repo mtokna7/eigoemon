@@ -1,16 +1,11 @@
 <div class="w-2/3 lg:w-1/2 lg:mx-0 mt-20">
   <div id="youglish-player"></div>
   <div id="youglish-widget" data-word="<%= word.name %>"></div>
-  <div class="ml-48 hidden lg:block">
-    <button id="play-button" class="btn btn-primary"><%= t('youglish.play') %></button>
-    <button id="pause-button" class="btn btn-secondary"><%= t('youglish.pause') %></button>
-    <button id="next-button" class="btn btn-primary"><%= t('youglish.next') %></button>
+  <div class="text-center">
+    <button id="play-button" class="btn btn-primary text-sm lg:text-base"><%= t('youglish.play') %></button>
+    <button id="pause-button" class="btn btn-secondary text-sm lg:text-base"><%= t('youglish.pause') %></button>
+    <button id="next-button" class="btn btn-primary text-sm lg:text-base"><%= t('youglish.next') %></button>
     <button id="prev-button" class="btn btn-secondary"><%= t('youglish.previous') %></button>
-    <button id="repeat-button" class="btn btn-secondary"><%= t('youglish.repeat') %></button>
-  </div>
-  <div class="block lg:hidden text-center">
-    <button id="play-button" class="btn btn-secondary"><%= t('youglish.play') %></button>
-    <button id="pause-button" class="btn btn-primary"><%= t('youglish.pause') %></button>
-    <button id="repeat-button" class="btn btn-secondary"><%= t('youglish.repeat') %></button>
+    <button id="repeat-button" class="btn btn-secondary text-sm lg:text-base"><%= t('youglish.repeat') %></button>
   </div>
 </div>
