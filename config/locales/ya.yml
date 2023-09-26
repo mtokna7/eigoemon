@@ -41,7 +41,7 @@ ja:
   main:
     user_level: "ユーザーレベル"
     library: "図書館"
-    start_quiz: "レベルあげゲーム（もんだい）"
+    start_quiz: "レベルあげ（もんだい）"
     memories: "おもいで"
     noted_words: "メモした単語"
     review_quizzes: "復習問題"
