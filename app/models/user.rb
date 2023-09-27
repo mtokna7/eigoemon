@@ -8,8 +8,8 @@ class User < ApplicationRecord
   before_create :set_last_sign_in_at
 
   LEVEL_UP_THRESHOLDS = 4
-  MAX_DAILY_LEVEL_UP = 2
-  MAX_LEVEL = 10
+  MAX_DAILY_LEVEL_UP = 3
+  MAX_LEVEL = 1
 
   def after_database_authentication
     super
