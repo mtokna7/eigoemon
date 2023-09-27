@@ -10,5 +10,5 @@
 
 <div class="lg:text-left text-center lg:ml-128 mt-5 mb-3">
   <%= render 'favorites/favorite_button', word: @word, favorited: @word.favorited_by?(current_user) %>
-  <%= link_to t('main.next_quiz'), quiz_path(Quiz.all.pluck(:id).sample), class: 'btn bg-orange-600 hover:bg-orange-500 text-white font-yusei' %>
+  <%= link_to t('main.next_quiz'), random_quiz_quizzes_path, class: 'btn bg-orange-600 hover:bg-orange-500 text-white font-yusei' %>
 </div>

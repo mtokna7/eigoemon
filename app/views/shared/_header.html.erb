@@ -8,7 +8,7 @@
       <ul class="menu menu-horizontal px-3 text-xl font-yusei text-base-200">
         <li>
           <% if user_signed_in? %>
-            <%= link_to quiz_path(Quiz.all.pluck(:id).sample), class: "header-loggedout btn bg-blue-600 hover:bg-blue-500 text-white hover:text-white font-yusei text-lg mr-5 block text-center" do %>
+            <%= link_to random_quiz_quizzes_path, class: "header-loggedout btn bg-blue-600 hover:bg-blue-500 text-white hover:text-white font-yusei text-lg mr-5 block text-center" do %>
               <%= t('main.start_quiz') %>
             <% end %>
         </li>

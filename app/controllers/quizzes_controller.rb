@@ -6,6 +6,16 @@ class QuizzesController < ApplicationController
     handle_level_up
   end
 
+  def random_quiz
+    quiz_answer_counts = Quiz.all.each_with_object({}) do |quiz, hash|
+      hash[quiz.id] = current_user.user_quiz_histories.where(word_id: quiz.word_id).count
+    end
+    min_answered_quiz_ids = quiz_answer_counts.select { |_, count| count == quiz_answer_counts.values.min }.keys
+    next_quiz_id = min_answered_quiz_ids.sample
+
+    redirect_to quiz_path(next_quiz_id)
+  end
+
   private
 
   def handle_level_up

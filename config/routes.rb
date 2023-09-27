@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :quizzes, only: %i[show]
+  resources :quizzes, only: %i[show] do
+    collection do
+      get 'random_quiz'
+    end
+  end
   resources :review_quizzes, only: [:show] do
     get 'explanation', on: :member
     collection do
