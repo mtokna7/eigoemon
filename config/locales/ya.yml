@@ -39,7 +39,7 @@ ja:
     announcement1: "回答履歴に応じて、もんだいが出題されるよ。"
     announcement2: "いまもんだいが表示されていないキミはきっと発音をこよなく愛しているね！"
   main:
-    user_level: "ユーザーレベル"
+    user_level: "レベル"
     library: "図書館"
     start_quiz: "レベルあげ（もんだい）"
     memories: "おもいで"
@@ -73,7 +73,7 @@ ja:
   modal:
     prologue: "プロローグ"
     congratulations: "おめでとう！レベル%{level}になったよ！"
-    notice: "（※1日で上げられるユーザーレベルは最大で2つまでだよ）"
+    notice: "（1日で上げられるユーザーレベルは最大で2つまでだよ）"
     epilogue: "エピローグ"
     screenshot: "スクショたいむ"
 
