@@ -6,6 +6,11 @@ class QuizzesController < ApplicationController
     handle_level_up
   end
 
+  def random_quiz
+    next_quiz = Quiz.next_quiz_for_user(current_user)
+    redirect_to quiz_path(next_quiz)
+  end
+
   private
 
   def handle_level_up
