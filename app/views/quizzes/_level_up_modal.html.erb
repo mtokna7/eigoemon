@@ -7,11 +7,11 @@
       </div>
     <% elsif user.level >= 1 && user.level <= 9 %>
       <div class="flex items-center">
-        <h3 class="text-lg font-dotgothic text-left text-violet-900 mb-1 mr-4"><%= t('modal.screenshot') %></h3>
+        <h3 class="lg:text-lg text-xs font-dotgothic text-left text-violet-900 mb-1 mr-4"><%= t('modal.screenshot') %></h3>
         <%= link_to t('main.share'), "https://twitter.com/intent/tweet?text=やった！レベル#{user.level}になったよ！もうふりがないんぐりっしゅマスターを名乗ろう！&hashtags=eigoemon&url=#{root_url}", class: 'btn btn-xs font-rocknroll bg-black hover:bg-black-600 text-white', target: "_blank" %>
       </div>
       <h3 class="lg:text-2xl text-lg font-dotgothic text-center text-violet-900 mb-1"><%= t('modal.congratulations', level: user.level) %></h3>
-      <p class="lg:text-lg font-dotgothic text-center text-violet-900 mb-1"><%= t('modal.notice') %></p>
+      <p class="lg:text-lg text-xs font-dotgothic text-center text-violet-900 mb-1"><%= t('modal.notice') %></p>
       <div class="flex space-x-4">
         <%= image_tag("keshiki.webp", alt: "Conversation Image") %>
       </div>
@@ -26,7 +26,7 @@
       </div>
     <% end %>
     <div class="flex md:flex-row flex-col mt-2">
-      <p id="conversation-content" class="font-dotgothic text-lg bg-black text-white flex-grow py-1 flex items-center">conversations</p>
+      <p id="conversation-content" class="font-dotgothic lg:text-lg text-sm bg-black text-white flex-grow py-1 flex items-center">conversations</p>
       <button type="button" class="btn font-dotgothic md:ml-4 ml-auto mr-auto mt-2 md:mt-0" id="next-button"><%= t('defaults.next') %></button>
     </div>
   </form>
