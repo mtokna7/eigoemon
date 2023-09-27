@@ -1,5 +1,5 @@
 <%= javascript_include_tag 'level_up' %>
 <%= render 'shared/question', explanation_path: 'programming_explanation_path', quiz: @quiz, quiz_choices: @quiz_choices %>
 <% if @level_up %>
-  <%= render 'level_up_modal' %>
+  <%= render 'level_up_modal', user: @user %>
 <% end %>

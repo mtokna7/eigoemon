@@ -72,7 +72,7 @@ ja:
     repeat: "くり返す"
   modal:
     prologue: "プロローグ"
-    congratulations: "おめでとう！ユーザーレベルがあがったよ！"
+    congratulations: "おめでとう！レベル%{level}になったよ！"
     notice: "（※1日で上げられるユーザーレベルは最大で2つまでだよ）"
     epilogue: "エピローグ"
 
