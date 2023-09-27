@@ -1,10 +1,10 @@
 <turbo-frame id="favorite_button">
 <% if favorited %>
-  <%= link_to word_favorite_path(word), data: {turbo_method: :delete}, class: 'btn font-rocknroll' do %>
+  <%= link_to word_favorite_path(word), data: {turbo_method: :delete}, class: 'text-white btn bg-blue-600 hover:bg-blue-500 font-rocknroll' do %>
     <%= t('main.unnote') %>
   <% end %>
 <% else %>
-  <%= link_to word_favorite_path(word), data: {turbo_method: :post}, class: 'btn font-rocknroll' do %>
+  <%= link_to word_favorite_path(word), data: {turbo_method: :post}, class: 'text-white btn bg-blue-600 hover:bg-blue-500 font-rocknroll' do %>
     <%= t('main.note') %>
   <% end %>
 <% end %>
