@@ -18,4 +18,13 @@ class Quiz < ApplicationRecord
     sorted_by_count = low_rate_quizzes.sort_by { |quiz| UserQuizHistory.where(user: user, word_id: quiz.word_id).count }
     sorted_by_count.first
   end
+
+  def self.next_quiz_for_user(user)
+    quiz_answer_counts = all.each_with_object({}) do |quiz, hash|
+      hash[quiz.id] = user.user_quiz_histories.where(word_id: quiz.word_id).count
+    end
+    min_answered_quiz_ids = quiz_answer_counts.select { |_, count| count == quiz_answer_counts.values.min }.keys
+
+    find(min_answered_quiz_ids.sample)
+  end
 end
