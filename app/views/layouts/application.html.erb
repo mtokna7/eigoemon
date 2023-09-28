@@ -30,7 +30,15 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
 </head>
 <body>
-  <% header_class = controller_name == "homes" && action_name == "top" ? "fixed top-0 w-full z-10" : "" %>
+  <% target_actions = [
+    { controller: "homes", action: "top" },
+    { controller: "words", action: "index" },
+    { controller: "tutorials", action: "library_index" },
+    { controller: "favorites", action: "index" }
+  ] %>
+
+  <% header_class = target_actions.any? { |ta| ta[:controller] == controller_name && ta[:action] == action_name } ? "fixed top-0 w-full z-10" : "" %>
+
   <header class="<%= header_class %>">
     <%= render 'shared/header' %>
   </header>
