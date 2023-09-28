@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
+  namespace :admin do
+    resources :users, only: %i[index destroy]
+  end
   resources :quizzes, only: %i[show] do
     collection do
       get 'random_quiz'
