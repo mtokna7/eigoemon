@@ -62,8 +62,12 @@ ja:
     which_is_correct?: "どっちのふりがながそれっぽい発音になると思う？"
     fantastic: "Fantastic！"
     great_fantastic: "ふぁんてぇぁぁぁあすてぃっく！"
+    genius: "You're genius!"
+    great_genius: "よぉじーーーーーーにあす！"
     nice_try: "Nice try"
     great_nice_try: "ないすちゅらい（惜しい）"
+    almost: "Almost there"
+    great_almost: "おおぅ もおうす ぜあ（惜しい）"
   youglish:
     play: "再生"
     pause: "停止"
