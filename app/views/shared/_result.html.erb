@@ -1,7 +1,16 @@
 <% if is_correct %>
-  <h1 class="font-rowdies text-lg text-center text-rose-900 mt-5"><%= t('question.fantastic') %></h1>
-  <h1 class="font-yusei lg:text-6xl text-3xl text-center text-rose-900"><%= t('question.great_fantastic') %></h1>
+  <% results = [
+    { main_text: 'fantastic', sub_text: 'great_fantastic' },
+    { main_text: 'genius', sub_text: 'great_genius' }
+  ].sample %>
+  <% color_class = "text-rose-900" %>
 <% else %>
-  <h1 class="font-rowdies text-lg text-center text-blue-800 mt-5"><%= t('question.nice_try') %></h1>
-  <h1 class="font-yusei lg:text-6xl text-3xl text-center text-blue-800"><%= t('question.great_nice_try') %></h1>
+  <% results = [
+    { main_text: 'nice_try', sub_text: 'great_nice_try' },
+    { main_text: 'almost', sub_text: 'great_almost' }
+  ].sample %>
+  <% color_class = "text-blue-800" %>
 <% end %>
+
+<h1 class="font-rowdies text-lg text-center <%= color_class %> mt-5"><%= t("question.#{results[:main_text]}") %></h1>
+<h1 class="font-yusei lg:text-6xl text-3xl text-center <%= color_class %>"><%= t("question.#{results[:sub_text]}") %></h1>
