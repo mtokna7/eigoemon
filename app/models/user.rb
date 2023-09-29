@@ -8,8 +8,8 @@ class User < ApplicationRecord
   before_create :set_last_sign_in_at
 
   LEVEL_UP_THRESHOLDS = 4
-  MAX_DAILY_LEVEL_UP = 3
-  MAX_LEVEL = 1
+  MAX_DAILY_LEVEL_UP = 2
+  MAX_LEVEL = 10
 
   def after_database_authentication
     super
@@ -30,25 +30,21 @@ class User < ApplicationRecord
 
   private
 
-  # rubocop:disable Style/GuardClause
-  # rubocop:disable Style/IfUnlessModifier
   def check_level_up
-    if last_leveled_up_at && last_leveled_up_at.to_date != Date.current
-      update!(daily_level_up_count: 0, last_leveled_up_at: nil)
-    end
+    reset_daily_level_up_count_if_needed
 
     correct_count_today = user_quiz_histories.where(is_correct: true, created_at: Date.current.all_day).count
 
-    if correct_count_today.positive?
-      remainder_today = correct_count_today % LEVEL_UP_THRESHOLDS
+    return unless (correct_count_today % LEVEL_UP_THRESHOLDS).zero? && daily_level_up_count < MAX_DAILY_LEVEL_UP
 
-      if remainder_today.zero? && daily_level_up_count < MAX_DAILY_LEVEL_UP
-        increase_level
-      end
-    end
+    increase_level
   end
-  # rubocop:enable Style/GuardClause
-  # rubocop:disable Style/IfUnlessModifier
+
+  def reset_daily_level_up_count_if_needed
+    return unless last_leveled_up_at && last_leveled_up_at.to_date != Date.current
+
+    update!(daily_level_up_count: 0, last_leveled_up_at: nil)
+  end
 
   # rubocop:disable Rails/SkipsModelValidations
   def increase_level
