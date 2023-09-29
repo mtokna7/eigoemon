@@ -40,14 +40,15 @@ RSpec.describe "User management", type: :system do
       click_button "ログイン"
     end
 
-    it "edits the name of the logged-in user" do
-      visit edit_user_registration_path
-
-      fill_in "user[name]", with: "New Name"
-      fill_in "user[current_password]", with: "password123"
-      click_button "更新"
-
-      expect(page).to have_content "アカウント情報を変更しました。"
+    it "logs out the logged-in user" do
+      find('summary', text: user.name.upcase).click
+      click_link "ログアウト"
+  
+      # アラートのハンドリング
+      page.driver.browser.switch_to.alert.accept
+  
+      expect(current_path).to eq(root_path)
+      expect(page).to have_content "ログアウトしました。"
     end
-  end
+  end  
 end
