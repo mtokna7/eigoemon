@@ -80,7 +80,7 @@ ja:
   modal:
     prologue: "プロローグ"
     congratulations: "おめでとう！レベル%{level}になったよ！"
-    notice: "（1日で上げられるユーザーレベルは最大で2つまでだよ）"
+    notice: "（1日最大で2つぶんレベル上げができるよ。レベルに関わらず もんだいはいくらでも解けるよ）"
     epilogue: "エピローグ"
     screenshot: "スクショたいむ"
 
