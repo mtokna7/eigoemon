@@ -6,6 +6,7 @@ AllCops:
   NewCops: enable
   DisplayCopNames: true
   Exclude:
+    - 'spec/**/*'
     - 'test/**/*'
     - 'Gemfile'
     - 'bin/**/*'

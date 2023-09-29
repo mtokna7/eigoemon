@@ -1,4 +1,7 @@
 ja:
+  users:
+    destroy:
+      self_deletion_alert: "自分自身を削除することはできません。"
   placeholder:
     search: "ここで検索もできるよ"
   defaults:

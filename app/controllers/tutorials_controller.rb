@@ -1,5 +1,7 @@
 class TutorialsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[quiz_show quiz_explanation library_index library_explanation autocomplete]
+  skip_before_action :authenticate_user!, only: %i[
+    quiz_show quiz_explanation library_index library_explanation autocomplete
+  ]
   before_action :set_quiz_sequence, only: %i[quiz_show quiz_explanation]
   before_action :next_quiz, only: %i[quiz_show]
   before_action :load_quiz, only: %i[quiz_show quiz_explanation]
