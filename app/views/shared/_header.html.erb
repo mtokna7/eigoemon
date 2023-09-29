@@ -32,7 +32,7 @@
             <details>
               <summary class="btn bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei px-8 text-lg mr-5"><%= current_user.name %></summary>
               <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-300 rounded-box text-lg">
-                <li class="text-rose-900 text-center"><%= t('main.user_level') %>：<%= current_user.level %></li>
+                <li class="text-rose-900 text-center"><%= t('main.user_level') %>：<%= current_user.level %>/10</li>
                 <li class="text-black"><%= link_to t('defaults.edit_user_information'), edit_user_registration_path %></li>
                 <li class="text-black">
                   <%= link_to destroy_user_session_path, data: {turbo_method: :delete, status: :see_other, turbo_confirm: t('defaults.logged_out?')} do %>
@@ -77,7 +77,7 @@
       <ul class="menu menu-horizontal font-yusei text-base-200">
         <li>
           <% if user_signed_in? %>
-            <%= link_to link_to random_quiz_quizzes_path, class: "btn btn-sm bg-blue-600 hover:bg-blue-500 text-white hover:text-white font-yusei block text-center mr-1" do %>
+            <%= link_to random_quiz_quizzes_path, class: "btn btn-sm bg-blue-600 hover:bg-blue-500 text-white hover:text-white font-yusei block text-center mr-1" do %>
               <%= t('main.start_quiz') %>
             <% end %>
         </li>
@@ -85,7 +85,7 @@
           <details>
             <summary class="btn btn-sm bg-rose-900 hover:bg-rose-800 text-white hover:text-white font-yusei ml-1"><%= current_user.name %></summary>
             <ul class="shadow menu dropdown-content bg-base-300 rounded-box mr-1">
-              <li class="text-rose-900"><%= t('main.user_level') %>：<%= current_user.level %></li>
+              <li class="text-rose-900"><%= t('main.user_level') %>：<%= current_user.level %>/10</li>
               <li class="text-black"><%= link_to t('defaults.edit_user_information'), edit_user_registration_path %></li>
               <li class="text-black">
                 <%= link_to destroy_user_session_path, data: {turbo_method: :delete, status: :see_other, turbo_confirm: t('defaults.logged_out?')} do %>
