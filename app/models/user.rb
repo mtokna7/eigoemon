@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   before_create :set_last_sign_in_at
 
-  LEVEL_UP_THRESHOLDS = 4
+  LEVEL_UP_THRESHOLDS = 3
   MAX_DAILY_LEVEL_UP = 2
   MAX_LEVEL = 10
 
