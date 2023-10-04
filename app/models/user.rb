@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   MAX_DAILY_LEVEL_UP = 2
   MAX_LEVEL = 10
+  LEVEL_UP_THRESHOLD_FOR_LEVEL_0 = 1
+  LEVEL_UP_THRESHOLD_FOR_OTHERS = 4
 
   def after_database_authentication
     super
@@ -32,22 +34,21 @@ class User < ApplicationRecord
   def level_up_threshold
     case level
     when 0
-      1
+      LEVEL_UP_THRESHOLD_FOR_LEVEL_0
     else
-      4
+      LEVEL_UP_THRESHOLD_FOR_OTHERS
     end
   end
 
   def check_level_up
     reset_daily_level_up_count_if_needed
-  
+
     correct_count_today = user_quiz_histories.where(is_correct: true, created_at: Date.current.all_day).count
-  
-    # ユーザーレベルが0の場合、正解が0のときは処理をスキップする
-    return if level == 0 && correct_count_today == 0
-  
+
+    return if level.zero? && correct_count_today.zero?
+
     return unless (correct_count_today % level_up_threshold).zero? && daily_level_up_count < MAX_DAILY_LEVEL_UP
-  
+
     increase_level
   end
 
