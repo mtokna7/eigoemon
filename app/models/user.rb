@@ -7,7 +7,6 @@ class User < ApplicationRecord
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   before_create :set_last_sign_in_at
 
-  LEVEL_UP_THRESHOLDS = 3
   MAX_DAILY_LEVEL_UP = 2
   MAX_LEVEL = 10
 
@@ -30,13 +29,25 @@ class User < ApplicationRecord
 
   private
 
+  def level_up_threshold
+    case level
+    when 0
+      1
+    else
+      4
+    end
+  end
+
   def check_level_up
     reset_daily_level_up_count_if_needed
-
+  
     correct_count_today = user_quiz_histories.where(is_correct: true, created_at: Date.current.all_day).count
-
-    return unless (correct_count_today % LEVEL_UP_THRESHOLDS).zero? && daily_level_up_count < MAX_DAILY_LEVEL_UP
-
+  
+    # ユーザーレベルが0の場合、正解が0のときは処理をスキップする
+    return if level == 0 && correct_count_today == 0
+  
+    return unless (correct_count_today % level_up_threshold).zero? && daily_level_up_count < MAX_DAILY_LEVEL_UP
+  
     increase_level
   end
 
