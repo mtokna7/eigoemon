@@ -20,11 +20,21 @@ class Quiz < ApplicationRecord
   end
 
   def self.next_quiz_for_user(user)
+    unanswered_quizzes = all.reject do |quiz|
+      user.user_quiz_histories.exists?(word_id: quiz.word_id)
+    end
+    
+    return unanswered_quizzes.sample if unanswered_quizzes.any?
+  
     quiz_answer_counts = all.each_with_object({}) do |quiz, hash|
       hash[quiz.id] = user.user_quiz_histories.where(word_id: quiz.word_id).count
     end
     min_answered_quiz_ids = quiz_answer_counts.select { |_, count| count == quiz_answer_counts.values.min }.keys
-
-    find(min_answered_quiz_ids.sample)
+  
+    oldest_answered_quiz = min_answered_quiz_ids.map do |quiz_id|
+      user.user_quiz_histories.where(word_id: quiz_id).order(created_at: :asc).first
+    end.compact.min_by(&:created_at)
+  
+    oldest_answered_quiz ? find(oldest_answered_quiz.word_id) : find(min_answered_quiz_ids.sample)
   end
 end
