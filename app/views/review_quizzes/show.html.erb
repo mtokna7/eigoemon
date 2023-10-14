@@ -2,5 +2,5 @@
 <p class="mx-auto text-2xl text-center font-yusei break-words text-white bg-gray-500 mt-3"><%= t('review.title1') %></p>
 <%= render 'shared/question', explanation_path: 'explanation_review_quiz_path', quiz: @quiz, quiz_choices: @quiz_choices %>
 <% if @level_up %>
-  <%= render 'quizzes/level_up_modal' %>
+  <%= render 'quizzes/level_up_modal', user: @user %>
 <% end %>
