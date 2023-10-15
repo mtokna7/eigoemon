@@ -59,6 +59,24 @@
       </div>
     </div>
 
+      <!-- 下部の小さなカードと右寄せテキスト -->
+      <% if user_signed_in? %>
+      <div class="hidden lg:flex flex-col lg:flex-row items-start mt-20 w-full">
+      <!-- 小さなカード -->
+      <div class="flex-shrink-0 mx-auto lg:mx-0 lg:ml-24 flex items-center justify-center bg-rose-900 rounded-2xl w-36 lg:w-48 h-7 py-4 lg:py-6 mt-3">
+        <h2 class="text-white text-xl lg:text-2xl font-rocknroll text-center">おもいで</h2>
+      </div>
+      <!-- 右寄せのテキスト部分 -->
+      <div class="mt-4 lg:mt-0 ml-0 lg:ml-10 flex flex-col items-start justify-center px-4 lg:px-0">
+        <p class="lg:text-2xl font-yusei mr-24 py-1">「メモした単語」と「復習もんだい」ページにつながるよ。</p>
+        <p class="lg:text-2xl font-yusei mr-24 py-1">「メモした単語」は、プログラミングの解説画面にある「メモする」ボタンを押した単語があれば、そのページにすぐにアクセスできるよ。</p>
+        <p class="lg:text-2xl font-yusei mr-24 py-1">「復習もんだい」は、過去に1度は解いたことのあるもんだいの中から、学ぶために最適な条件でもんだいが出されるよ。</p>
+        <p class="lg:text-2xl font-yusei mr-24 py-1">1度回答したもんだいは、正誤にかかわらずその日じゅうに1回は「復習もんだい」に表示されるようになっているから</p>
+        <p class="lg:text-2xl font-yusei mr-24 py-1">「ぐうぜん正解して流してしまったけど、もう1回問題や解説をかくにんしたい」ってときにも使えるよ。</p>
+      </div>
+    </div>
+    <% end %>
+
       <p class="lg:text-5xl font-yusei mr-9 mt-10 lg:mb-12 text-center text-purple-900">説明は以上だよ！さっそく遊ぼう！</p>
 
       <div class="mt-8 flex items-center justify-center bg-blue-700 py-4 lg:py-6 w-36 lg:w-44 rounded-2xl h-7">
