@@ -22,6 +22,10 @@ AllCops:
 Metrics/MethodLength:
   Exclude:
     - 'app/helpers/application_helper.rb'
+  Max: 20
+
+Metrics/AbcSize:
+  Max: 25
 
 Metrics/BlockLength:
   Exclude:
