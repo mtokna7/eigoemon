@@ -5,6 +5,7 @@ class Quiz < ApplicationRecord
   SAME_DAY = 0
   AFTER_5_DAYS = 5
 
+  # 復習問題の出題
   def self.get_review_quiz_for_user(user)
     answered_quizzes = Quiz.joins(quiz_choices: :user_quiz_histories)
                            .where(user_quiz_histories: { user_id: user.id })
@@ -62,22 +63,32 @@ class Quiz < ApplicationRecord
     end
   end
 
+  # 通常のクイズ機能の出題
   def self.next_quiz_for_user(user)
-    unanswered_quizzes = all.reject do |quiz|
-      user.user_quiz_histories.exists?(word_id: quiz.word_id)
-    end
-
+    unanswered_quizzes = unanswered_quizzes_for_user(user)
     return unanswered_quizzes.sample if unanswered_quizzes.any?
 
+    min_answered_quiz_ids = quizzes_with_min_answer_count_for_user(user)
+    oldest_answered_quiz = oldest_answered_quiz_for_user(user, min_answered_quiz_ids)
+
+    oldest_answered_quiz ? find(oldest_answered_quiz.word_id) : find(min_answered_quiz_ids.sample)
+  end
+
+  def self.unanswered_quizzes_for_user(user)
+    all.reject do |quiz|
+      user.user_quiz_histories.exists?(word_id: quiz.word_id)
+    end
+  end
+
+  def self.quizzes_with_min_answer_count_for_user(user)
     quiz_answer_counts = all.each_with_object({}) do |quiz, hash|
       hash[quiz.id] = user.user_quiz_histories.where(word_id: quiz.word_id).count
     end
-    min_answered_quiz_ids = quiz_answer_counts.select { |_, count| count == quiz_answer_counts.values.min }.keys
+    min_count = quiz_answer_counts.values.min
+    quiz_answer_counts.select { |_, count| count == min_count }.keys
+  end
 
-    oldest_answered_quiz = min_answered_quiz_ids.map do |quiz_id|
-      user.user_quiz_histories.where(word_id: quiz_id).order(created_at: :asc).first
-    end.compact.min_by(&:created_at)
-
-    oldest_answered_quiz ? find(oldest_answered_quiz.word_id) : find(min_answered_quiz_ids.sample)
+  def self.oldest_answered_quiz_for_user(user, quiz_ids)
+    user.user_quiz_histories.where(word_id: quiz_ids).order(created_at: :asc).first
   end
 end
