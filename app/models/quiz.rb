@@ -17,7 +17,7 @@ class Quiz < ApplicationRecord
       if latest_history.is_correct?
         evaluate_correct_histories(user, quiz, days_since_last_answer, latest_history)
       else
-        days_since_last_answer >= 0
+        days_since_last_answer >= SAME_DAY
       end
     end
 
