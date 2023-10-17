@@ -1,15 +1,15 @@
-<div class="flex justify-center items-center mt-28">
-  <p class="text-4xl font-rocknroll mr-5"><%= t('main.library_announcement') %></p>
+<p class="mx-auto text-3xl text-center font-yusei mt-3">おためしでは <span class="text-blue-600 font-rowdies text-5xl">sequence</span>・<span class="text-blue-600 font-rowdies text-5xl">through</span>・<span class="text-blue-600 font-rowdies text-5xl">width</span> の3単語の詳細だけを見ることができるよ！</p>
+<p class="mx-auto text-3xl text-center font-yusei break-words text-rose-900 mt-8">※ <%= t('main.sound_notice') %></p>
+
+<div class="flex justify-center items-center mt-2">
   <div data-controller="autocomplete" data-autocomplete-url-value="<%= tutorial_autocomplete_words_path %>" role="combobox" class="text-lg relative">
     <input type="text" data-autocomplete-target="input" class="border rounded" autofocus placeholder="<%= t('placeholder.search') %>">
     <input type="hidden" name="word_id" data-autocomplete-target="hidden"/>
     <ul class="list-group absolute z-10 mt-2 bg-white border rounded shadow-lg" data-autocomplete-target="results"></ul>
   </div>
 </div>
-  <p class="mx-auto text-3xl text-center font-yusei mt-3">おためしでは <span class="text-blue-600 font-rowdies text-5xl">sequence</span>・<span class="text-blue-600 font-rowdies text-5xl">through</span>・<span class="text-blue-600 font-rowdies text-5xl">width</span> の3単語の詳細だけを見ることができるよ！</p>
-<p class="mx-auto text-3xl text-center font-yusei break-words text-rose-900 mt-8">※ <%= t('main.sound_notice') %></p>
 
-<div class="mockup-code mt-3 mx-28 bg-gray-600 text-white p-3 mb-40 flex flex-wrap justify-center">
+<div class="mockup-code mt-3 mx-28 bg-gray-600 text-white mb-32 flex flex-wrap justify-center overflow-y-auto" style="max-height: 400px;">
   <% @words.each do |word| %>
     <div class="m-3 w-60 text-center">
       <% if word.id == 1 || word.id == 4 || word.id == 7 %>
