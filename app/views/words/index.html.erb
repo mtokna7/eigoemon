@@ -1,5 +1,7 @@
+<p class="text-4xl text-center font-rocknroll break-words mr-5"><%= t('main.library_announcement') %></p>
+<p class="mx-auto text-2xl text-center font-yusei break-words text-rose-900 mt-3">※ <%= t('main.sound_notice')%></p>
+
 <div class="flex justify-center items-center mt-2">
-  <p class="text-4xl font-rocknroll break-words mr-5"><%= t('main.library_announcement') %></p>
   <div data-controller="autocomplete" data-autocomplete-url-value="<%= autocomplete_words_path %>" role="combobox" class="text-lg relative">
     <input type="text" data-autocomplete-target="input" class="border rounded" autofocus placeholder="<%= t('placeholder.search') %>">
     <input type="hidden" name="word_id" data-autocomplete-target="hidden"/>
@@ -7,9 +9,7 @@
   </div>
 </div>
 
-<p class="mx-auto text-2xl text-center font-yusei break-words text-rose-900 mt-3">※ <%= t('main.sound_notice')%></p>
-
-<div class="mockup-code mt-3 mx-28 bg-gray-600 text-white mb-32 flex flex-wrap justify-center overflow-y-auto" style="max-height: 400px;">
+<div class="mockup-code mt-3 mx-28 bg-gray-600 text-white mb-10 flex flex-wrap justify-center overflow-y-auto" style="max-height: 400px;">
     <% @words.each do |word| %>
       <div class="m-3 w-60 text-center">
         <code class="hover:bg-yellow-500 hover:text-gray-900 text-2xl px-3">
