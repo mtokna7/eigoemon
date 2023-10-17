@@ -9,21 +9,17 @@
   <p class="mx-auto text-3xl text-center font-yusei mt-3">おためしでは <span class="text-blue-600 font-rowdies text-5xl">sequence</span>・<span class="text-blue-600 font-rowdies text-5xl">through</span>・<span class="text-blue-600 font-rowdies text-5xl">width</span> の3単語の詳細だけを見ることができるよ！</p>
 <p class="mx-auto text-3xl text-center font-yusei break-words text-rose-900 mt-8">※ <%= t('main.sound_notice') %></p>
 
-<div class="mockup-code mt-3 mx-28 bg-gray-600 text-white p-3 mb-40 flex flex-col items-center justify-center">
-  <% @words.each_slice(6) do |word_group| %>
-    <div class="flex flex-wrap justify-center">
-      <% word_group.each do |word| %>
-        <div class="m-3 inline-block">
-          <% if word.id == 1 || word.id == 4 || word.id == 7 %>
-            <code class="hover:bg-blue-300 hover:text-gray-900 text-2xl px-3 text-blue-300">
-              <%= link_to word.name, library_explanation_tutorials_path(word_id: word.id) %>
-            </code>
-          <% else %>
-            <code class="hover:bg-yellow-500 hover:text-gray-900 text-2xl px-3">
-              <%= word.name %>
-            </code>
-          <% end %>
-        </div>
+<div class="mockup-code mt-3 mx-28 bg-gray-600 text-white p-3 mb-40 flex flex-wrap justify-center">
+  <% @words.each do |word| %>
+    <div class="m-3 w-60 text-center">
+      <% if word.id == 1 || word.id == 4 || word.id == 7 %>
+        <code class="hover:bg-blue-300 hover:text-gray-900 text-2xl px-3 text-blue-300">
+          <%= link_to word.name, library_explanation_tutorials_path(word_id: word.id) %>
+        </code>
+      <% else %>
+        <code class="hover:bg-yellow-500 hover:text-gray-900 text-2xl px-3">
+          <%= word.name %>
+        </code>
       <% end %>
     </div>
   <% end %>
