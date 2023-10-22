@@ -1,9 +1,11 @@
 <!-- PC向け -->
+<%= javascript_include_tag 'speech_recognition' %>
 <div class="hidden lg:block">
   <div class="navbar bg-yellow-600">
     <div class="flex-1">
       <%= link_to t('defaults.eigoemon'), root_path, class: 'btn bg-rose-900 hover:bg-rose-800 text-white text-xl font-yusei ml-10' %>
     </div>
+    <p><%= render 'shared/speech_recognition' %></p>
     <div class="flex-none">
       <ul class="menu menu-horizontal px-3 text-xl font-yusei text-base-200">
         <li>
