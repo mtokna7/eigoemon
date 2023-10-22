@@ -60,25 +60,10 @@
     </div>
 
       <!-- 下部の小さなカードと右寄せテキスト -->
-      <div class="hidden lg:flex flex-col lg:flex-row items-start mt-20 w-full">
-      <!-- 小さなカード -->
-      <div class="flex-shrink-0 mx-auto lg:mx-0 lg:ml-24 flex items-center justify-center bg-rose-900 rounded-2xl w-36 lg:w-48 h-7 py-4 lg:py-6 mt-3">
-        <h2 class="text-white text-xl lg:text-2xl font-rocknroll text-center"><i class="fa-solid fa-microphone"></i> ← これ</h2>
-      </div>
-      <!-- 右寄せのテキスト部分 -->
-      <div class="mt-4 lg:mt-0 ml-0 lg:ml-10 flex flex-col items-start justify-center px-4 lg:px-0">
-        <p class="lg:text-2xl font-yusei mr-24 py-1">音声認識をして、自分の発音がどの単語に認識されたかをチェックできるよ。</p>
-        <p class="lg:text-2xl font-yusei mr-24 py-1">「bundle install」など2単語以上のフレーズは、1単語ずつチェックしてね。</p>
-        <p class="lg:text-2xl font-yusei mr-24 py-1 text-rose-800">※ 「nginx」など、日常英単語ではない単語は正しく結果が表示されないよ。</p>
-      </div>
-    </div>
-
-
-      <!-- 下部の小さなカードと右寄せテキスト -->
       <% if user_signed_in? %>
       <div class="hidden lg:flex flex-col lg:flex-row items-start mt-20 w-full">
       <!-- 小さなカード -->
-      <div class="flex-shrink-0 mx-auto lg:mx-0 lg:ml-24 flex items-center justify-center bg-rose-900 rounded-2xl w-36 lg:w-48 h-7 py-4 lg:py-6 mt-3">
+      <div class="flex-shrink-0 mx-auto lg:mx-0 lg:ml-24 flex items-center justify-center bg-gray-500 rounded-2xl w-36 lg:w-48 h-7 py-4 lg:py-6 mt-3">
         <h2 class="text-white text-xl lg:text-2xl font-rocknroll text-center">おもいで</h2>
       </div>
       <!-- 右寄せのテキスト部分 -->
@@ -91,6 +76,20 @@
       </div>
     </div>
     <% end %>
+
+      <!-- 下部の小さなカードと右寄せテキスト -->
+      <div class="hidden lg:flex flex-col lg:flex-row items-start mt-20 w-full">
+      <!-- 小さなカード -->
+      <div class="flex-shrink-0 mx-auto lg:mx-0 lg:ml-24 flex items-center justify-center bg-rose-900 rounded-2xl w-36 lg:w-48 h-7 py-4 lg:py-6 mt-3">
+        <h2 class="text-white text-xl lg:text-2xl font-rocknroll text-center"><i class="fa-solid fa-microphone"></i> マイクボタン</h2>
+      </div>
+      <!-- 右寄せのテキスト部分 -->
+      <div class="mt-4 lg:mt-0 ml-0 lg:ml-10 flex flex-col items-start justify-center px-4 lg:px-0">
+        <p class="lg:text-2xl font-yusei mr-24 py-1">音声認識をして、自分の発音がどの単語に認識されたかをチェックできるよ。</p>
+        <p class="lg:text-2xl font-yusei mr-24 py-1">「bundle install」など2単語以上のフレーズは、1単語ずつチェックしてね。</p>
+        <p class="lg:text-2xl font-yusei mr-24 py-1 text-rose-800">※ 「nginx」など、日常英単語ではない単語は正しく結果が表示されないよ。</p>
+      </div>
+    </div>
 
       <p class="lg:text-5xl font-yusei mr-9 mt-10 lg:mb-12 text-center text-purple-900">説明は以上だよ！さっそく遊ぼう！</p>
 
