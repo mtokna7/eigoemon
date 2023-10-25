@@ -9,7 +9,7 @@ recognition.continuous = false;
 
 // 認識結果を取得するためのイベントリスナーを設定
 recognition.addEventListener('result', (event) => {
-  const transcriptElement = document.getElementById('transcript'); // この行を追加
+  const transcriptElement = document.getElementById('transcript');
   const transcript = Array.from(event.results)
     .map(result => result[0])
     .map(result => result.transcript)
@@ -26,7 +26,7 @@ recognition.addEventListener('result', (event) => {
   } else {
     console.log(transcript); // ここで認識結果を表示
     transcriptElement.innerText = transcript; // 認識結果を表示エリアに表示
-    transcriptElement.classList.add('text-xl', 'font-yusei'); // この行を追加
+    transcriptElement.classList.add('text-xl', 'font-yusei');
   }
 });
 
