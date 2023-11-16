@@ -3,6 +3,7 @@ class ReviewQuizzesController < ApplicationController
     @user = current_user
     @quiz = Quiz.get_review_quiz_for_user(@user)
     if @quiz
+      session[:review_quiz_accessed] = true
       redirect_to review_quiz_path(@quiz)
     else
       redirect_to no_quizzes_review_quizzes_path
@@ -12,8 +13,15 @@ class ReviewQuizzesController < ApplicationController
   def show
     @user = current_user
     @quiz = Quiz.find(params[:id])
+    unless session[:review_quiz_accessed]
+      redirect_to generate_review_quizzes_path, alert: t("alert.next_quiz")
+      return
+    end
+    session[:review_quiz_accessed] = false
     @quiz_choices = @quiz.quiz_choices
     handle_level_up
+  rescue ActiveRecord::RecordNotFound
+    redirect_to generate_review_quizzes_path, alert: t("alert.next_quiz")
   end
 
   def explanation
