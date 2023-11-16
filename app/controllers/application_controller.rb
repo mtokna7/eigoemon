@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   def handle_level_up
     if level_up_conditions_met?
       @level_up = true
-      @conversations = Conversation.where(level: current_user.level).order(:order)
+      @conversations = Conversation.for_level(current_user.level)
       reset_flags
     else
       @level_up = false
