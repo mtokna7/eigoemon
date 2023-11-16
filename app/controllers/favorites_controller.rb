@@ -6,7 +6,7 @@ class FavoritesController < ApplicationController
   def show
     @favorite = current_user.favorites.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    redirect_to favorites_path, alert: t("favorites.not_found")
+    redirect_to favorites_path, alert: t("alert.not_found")
   end
 
   def create

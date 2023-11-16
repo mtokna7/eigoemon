@@ -28,9 +28,6 @@ ja:
     required: "必須"
     back: "もどる"
     next: "つぎへ"
-    not_have_access_rights: "アクセス権限がありません。"
-  favorites:
-    not_found: "単語が見つかりません。"
   tutorials:
     title: "おためし"
     quiz: "もんだい（3問）"
@@ -87,6 +84,11 @@ ja:
     screenshot: "スクショたいむ"
   alert:
     next_quiz: "良い感じのクイズを自動で出題するよ！"
+    not_found: "データが見つからなかったよ！"
+    need_sign_in: "ログインがひつようだよ！"
+
+
+
 
 
 
