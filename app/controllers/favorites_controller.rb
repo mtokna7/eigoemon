@@ -1,11 +1,12 @@
 class FavoritesController < ApplicationController
   def index
-    @favorites = Favorite.where(user_id: current_user.id).includes(:word).order('words.name')
+    @favorites = Favorite.for_user(current_user.id)
   end
 
   def show
-    @favorite = Favorite.find_by(id: params[:id])
-    redirect_to favorites_path unless @favorite
+    @favorite = Favorite.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to favorites_path, alert: t("favorites.not_found")
   end
 
   def create

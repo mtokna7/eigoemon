@@ -32,6 +32,9 @@
 <body>
   <% target_actions = [
     { controller: "homes", action: "top" },
+    { controller: "words", action: "index" },
+    { controller: "tutorials", action: "library_index" },
+    { controller: "favorites", action: "index" }
   ] %>
 
   <% header_class = target_actions.any? { |ta| ta[:controller] == controller_name && ta[:action] == action_name } ? "fixed top-0 w-full z-10" : "" %>
@@ -41,7 +44,7 @@
   </header>
 
   <% flash.each do |key, value| %>
-    <div class="<%= 'mt-20' if controller_name == 'homes' && action_name == 'top' %> alert">
+    <div class="<%= 'mt-20' if controller_name == 'homes' && action_name == 'top' || controller_name == 'favorites' && action_name == 'index' %> alert">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
       </svg>

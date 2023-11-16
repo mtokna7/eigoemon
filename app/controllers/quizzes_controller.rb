@@ -27,7 +27,7 @@ class QuizzesController < ApplicationController
 
   def execute_level_up
     @level_up = true
-    @conversations = Conversation.where(level: current_user.level).order(:order)
+    @conversations = Conversation.for_level(current_user.level)
     reset_flags
   end
 
