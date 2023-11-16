@@ -33,7 +33,7 @@ class TutorialsController < ApplicationController
 
   def library_explanation
     @word = Word.find(params[:word_id])
-    redirect_to library_index_tutorials_path unless can_access_tutorial?
+    redirect_to library_index_tutorials_path, alert: t("alert.need_sign_in") unless can_access_tutorial?
   end
 
   private

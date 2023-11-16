@@ -7,5 +7,7 @@ class ExplanationsController < ApplicationController
 
   def english
     @word = Word.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to words_path, alert: t("alert.not_found")
   end
 end
