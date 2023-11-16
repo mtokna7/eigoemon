@@ -29,6 +29,8 @@ ja:
     back: "もどる"
     next: "つぎへ"
     not_have_access_rights: "アクセス権限がありません。"
+  favorites:
+    not_found: "メモ登録された単語がありません。"
   tutorials:
     title: "おためし"
     quiz: "もんだい（3問）"

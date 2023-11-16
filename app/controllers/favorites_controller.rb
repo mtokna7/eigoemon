@@ -4,11 +4,9 @@ class FavoritesController < ApplicationController
   end
 
   def show
-    begin
-      @favorite = Favorite.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      redirect_to favorites_path, alert: 'Favorite not found'
-    end
+    @favorite = Favorite.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to favorites_path, alert: t("favorites.not_found")
   end
 
   def create
