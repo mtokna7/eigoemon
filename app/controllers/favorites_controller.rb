@@ -1,6 +1,6 @@
 class FavoritesController < ApplicationController
   def index
-    @favorites = Favorite.where(user_id: current_user.id).includes(:word).order('words.name')
+    @favorites = Favorite.for_user(current_user.id)
   end
 
   def show
