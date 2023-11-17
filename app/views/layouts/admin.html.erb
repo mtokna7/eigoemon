@@ -9,6 +9,10 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
   <body>
+    <header>
+      <%= render 'admin/shared/header' %>
+    </header>
+
     <div id="admin-container">
       <%= yield %>
     </div>
