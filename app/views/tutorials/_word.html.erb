@@ -1,0 +1,11 @@
+<div class="m-3 w-60 text-center">
+  <% if word.id == 1 || word.id == 4 || word.id == 7 %>
+    <code class="hover:bg-blue-300 hover:text-gray-900 text-2xl px-3 text-blue-300">
+      <%= link_to word.name, library_explanation_tutorials_path(word_id: word.id) %>
+    </code>
+  <% else %>
+    <code class="hover:bg-yellow-500 hover:text-gray-900 text-2xl px-3">
+      <%= word.name %>
+    </code>
+  <% end %>
+</div>
