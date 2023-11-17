@@ -15,22 +15,7 @@
       </tr>
     </thead>
     <tbody class="bg-white divide-y divide-gray-200">
-      <% @users.each do |user| %>
-        <tr>
-          <td class="px-6 py-4 whitespace-nowrap"><%= user.id %></td>
-          <td class="px-6 py-4 whitespace-nowrap"><%= user.name %></td>
-          <td class="px-6 py-4 whitespace-nowrap"><%= user.level %></td>
-          <td class="px-6 py-4 whitespace-nowrap"><%= user.created_at %></td>
-          <td class="px-6 py-4 whitespace-nowrap">
-            <% unless user == current_user %>
-              <%= link_to "削除", admin_user_path(user), data: {
-                turbo_method: :delete,
-                turbo_confirm: 'このユーザーを削除しますか？'
-              } , class: 'btn btn-error btn-sm' %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
+      <%= render partial: 'user', collection: @users %>
     </tbody>
   </table>
 </div>
