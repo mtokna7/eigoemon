@@ -5,13 +5,7 @@
 
 <div class="mockup-code  mt-5 mx-28 bg-gray-600 text-white p-3 pb-52 mb-52">
   <% if @favorites.present? %>
-      <% @favorites.each do |favorite| %>
-        <div class="m-3 inline-block">
-          <code class="hover:bg-yellow-500 hover:text-gray-900 text-2xl px-3">
-            <%= link_to favorite.word.name, favorite_path(favorite) %>
-          </code>
-        </div>
-      <% end %>
+    <%= render partial: "favorite", collection: @favorites  %>
   <% else %>
     <p class="text-2xl px-3 text-center"><%= t('main.not_noted')%></p>
   <% end %>
