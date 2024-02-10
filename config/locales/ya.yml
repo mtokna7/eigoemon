@@ -2,6 +2,8 @@ ja:
   users:
     destroy:
       self_deletion_alert: "自分自身を削除することはできません。"
+    edit:
+      Cancel my account: "アカウントを削除する"
   placeholder:
     search: "ここで検索もできるよ"
   defaults:
