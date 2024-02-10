@@ -4,6 +4,7 @@ ja:
       self_deletion_alert: "自分自身を削除することはできません。"
     edit:
       Cancel my account: "アカウントを削除する"
+      alert: "アカウントの削除は取り消しができません。削除しますか？"
   placeholder:
     search: "ここで検索もできるよ"
   defaults:
