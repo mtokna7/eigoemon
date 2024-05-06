@@ -3,9 +3,6 @@
 
 ![ogp2](https://github.com/yamana-runteq41/eigoemon/assets/121042778/1c805842-2281-40a1-8b57-ae16b0aba45d)
 
-
-### ▼アプリのURL：https://eigoemon-dbeef865ae1d.herokuapp.com/
-
 ### ▼「はつめい屋　英語えもん」とは？
 プログラミング学習中によく見かける英単語を、ネイティブ「っぽく」読めるようになるサービスです。
 「勉強するっておもしろい！」と感じていただける、ポジティブな体験を作りたいという思いで作成しました。
